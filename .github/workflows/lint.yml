@@ -1,0 +1,86 @@
+name: Lint Workflow
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+
+      # Set up Node.js and run npm lint (for JavaScript/TypeScript)
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ inputs.node-version }}
+      - run: sudo apt install npm
+      - run: |
+          if [ -f package.json ]; then
+            npm install
+            npm run lint    # Run lint for JavaScript/TypeScript only if package.json exists
+          else
+            echo "No JavaScript files or package.json found, skipping npm lint."
+          fi
+
+      # Set up Python and run pylint (for Python)
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: |
+          python -m pip install --upgrade pip
+          pip install pylint
+      - name: Lint Python files (if any)
+        run: |
+          if [ $(find . -name "*.py" | wc -l) -gt 0 ]; then
+            pylint **/*.py  # Lint Python files
+          else
+            echo "No Python files found, skipping pylint."
+          fi
+
+      # Set up C++ and run clang-tidy (for C++)
+      - name: Install clang-tidy
+        run: sudo apt-get install -y clang-tidy
+      - name: Lint C++ files (if any)
+        run: |
+          if [ $(find . -name "*.cpp" | wc -l) -gt 0 ]; then
+            clang-tidy **/*.cpp --checks=* --quiet  # Run C++ linting with clang-tidy
+          else
+            echo "No C++ files found, skipping clang-tidy."
+          fi
+
+      # Set up JSON linting (if any JSON files are found)
+      - name: Install jsonlint
+        run: sudo apt-get install -y jsonlint
+      - name: Lint JSON files (if any)
+        run: |
+          if [ $(find . -name "*.json" | wc -l) -gt 0 ]; then
+            jsonlint **/*.json -q  # Lint JSON files quietly
+          else
+            echo "No JSON files found, skipping jsonlint."
+          fi
+
+      # Set up Java linting (if any Java files are found)
+      - name: Install checkstyle
+        run: sudo apt-get install -y checkstyle
+      - name: Lint Java files (if any)
+        run: |
+          if [ $(find . -name "*.java" | wc -l) -gt 0 ]; then
+            checkstyle -c /google_checks.xml **/*.java  # Run Java linting with checkstyle (Google Java style)
+          else
+            echo "No Java files found, skipping checkstyle."
+          fi
+
+      # Set up YAML linting (if any YAML files are found)
+      - name: Install yamllint
+        run: sudo apt-get install -y yamllint
+      - name: Lint YAML files (if any)
+        run: |
+          yaml_files=$(find . -name "*.yaml" -or -name "*.yml" | wc -l)
+          if ["$yaml_files" -gt 0]; then
+            echo "$yaml_files" | xargs yamllint  # Pass the YAML files to yamllint
+          else
+            echo "No YAML files found, skipping yamllint."
+          fi
