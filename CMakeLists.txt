@@ -12,7 +12,7 @@ find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 
 # Recursively collect all .msg files
-file(GLOB_RECURSE msg_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "msg/**/*.msg")
+file(GLOB_RECURSE msg_files RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} "*/**.msg")
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   ${msg_files}
