@@ -1,4 +1,6 @@
 std_msgs/Header header
 
-float32[]   emg               # Amplitude of the output signal in [unit]
-float32[]   signal_quality    # Signal quality from 0-1 [%]
+string session_id          # Optional: link to session or recording
+
+float32[] emg              # EMG signal amplitude samples (units defined in EMGInfo)
+float32[] signal_quality   # Quality scores per sample, 0 (poor) to 1 (excellent)
