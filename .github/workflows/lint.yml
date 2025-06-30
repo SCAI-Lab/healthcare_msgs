@@ -95,7 +95,7 @@ jobs:
 
       - name: Install ROS 2 message tools
         run: |
-          sudo apt install -y ros-humble-rosmsg python3-rosdistro python3-rospkg
+          sudo apt install -y ros-humble-ros2cli python3-rosdistro python3-rospkg
           source /opt/ros/humble/setup.bash
       - name: Run rosmsg checks
         run: |
