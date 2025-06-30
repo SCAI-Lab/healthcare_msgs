@@ -97,8 +97,8 @@ jobs:
         run: |
           sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key F42ED6FBAB17C654
           sudo apt-get update
-          sudo apt-get install -y ros-${ROS_DISTRO}-rosmsg python3-rosdistro python3-rospkg
-          source /opt/ros/${ROS_DISTRO}/setup.bash
+          sudo apt-get install -y ros-humble-rosmsg python3-rosdistro python3-rospkg
+          source /opt/ros/humble/setup.bash
 
       - name: Run rosmsg checks
         run: |
