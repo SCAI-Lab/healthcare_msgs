@@ -52,7 +52,7 @@ jobs:
                         debhelper dh-python \
                         python3-bloom
           apt install -y git python3-ament-package || true
-          apt install ros-$ROS_DISTRO-rcutils
+          apt install -y ros-$ROS_DISTRO-rcutils
           source /opt/ros/$ROS_DISTRO/setup.bash
           mkdir -p /etc/ros/rosdep/sources.list.d
 
