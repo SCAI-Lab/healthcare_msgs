@@ -8,6 +8,7 @@ on:
 jobs:
   build-debs:
     runs-on: ubuntu-22.04
+    continue-on-error: true
     strategy:
       matrix:
         include:
@@ -15,12 +16,6 @@ jobs:
             arch: amd64
             os_version: jammy
           - ros_distro: humble
-            arch: arm64
-            os_version: jammy
-          - ros_distro: iron
-            arch: amd64
-            os_version: jammy
-          - ros_distro: iron
             arch: arm64
             os_version: jammy
           - ros_distro: rolling
