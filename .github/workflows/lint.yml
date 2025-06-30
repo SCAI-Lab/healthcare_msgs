@@ -14,7 +14,8 @@ jobs:
       # Set up Node.js and run npm lint (for JavaScript/TypeScript)
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: ${{ inputs.node-version }}
+      - run: sudo apt install npm
       - run: |
           if [ -f package.json ]; then
             npm install
@@ -34,7 +35,7 @@ jobs:
       - name: Lint Python files (if any)
         run: |
           if [ $(find . -name "*.py" | wc -l) -gt 0 ]; then
-            find . -name "*.py" | xargs pylint
+            pylint **/*.py  # Lint Python files
           else
             echo "No Python files found, skipping pylint."
           fi
@@ -45,20 +46,20 @@ jobs:
       - name: Lint C++ files (if any)
         run: |
           if [ $(find . -name "*.cpp" | wc -l) -gt 0 ]; then
-            find . -name "*.cpp" | xargs clang-tidy --checks=* --quiet
+            clang-tidy **/*.cpp --checks=* --quiet  # Run C++ linting with clang-tidy
           else
             echo "No C++ files found, skipping clang-tidy."
           fi
 
       # Set up JSON linting (if any JSON files are found)
-      - name: Install jq (for JSON lint)
-        run: sudo apt-get install -y jq
+      - name: Install jsonlint
+        run: sudo apt-get install -y jsonlint
       - name: Lint JSON files (if any)
         run: |
           if [ $(find . -name "*.json" | wc -l) -gt 0 ]; then
-            find . -name "*.json" -exec jq empty {} \;
+            jsonlint **/*.json -q  # Lint JSON files quietly
           else
-            echo "No JSON files found, skipping JSON lint."
+            echo "No JSON files found, skipping jsonlint."
           fi
 
       # Set up Java linting (if any Java files are found)
@@ -67,11 +68,7 @@ jobs:
       - name: Lint Java files (if any)
         run: |
           if [ $(find . -name "*.java" | wc -l) -gt 0 ]; then
-            # Download Google style config if not exists
-            if [ ! -f google_checks.xml ]; then
-              curl -sSL -o google_checks.xml https://raw.githubusercontent.com/checkstyle/checkstyle/master/src/main/resources/google_checks.xml
-            fi
-            find . -name "*.java" | xargs checkstyle -c google_checks.xml
+            checkstyle -c /google_checks.xml **/*.java  # Run Java linting with checkstyle (Google Java style)
           else
             echo "No Java files found, skipping checkstyle."
           fi
@@ -81,9 +78,9 @@ jobs:
         run: sudo apt-get install -y yamllint
       - name: Lint YAML files (if any)
         run: |
-          yaml_files=$(find . -name "*.yaml" -or -name "*.yml")
-          if [ -n "$yaml_files" ]; then
-            echo "$yaml_files" | xargs yamllint
+          yaml_files=$(find . -name "*.yaml" -or -name "*.yml" | wc -l)
+          if ["$yaml_files" -gt 0]; then
+            echo "$yaml_files" | xargs yamllint  # Pass the YAML files to yamllint
           else
             echo "No YAML files found, skipping yamllint."
           fi
