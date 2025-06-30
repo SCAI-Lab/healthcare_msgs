@@ -93,17 +93,17 @@ jobs:
           sudo apt update
 
       # Set up ROS 2 Humble for .msg linting
-      - name: Setup ROS 2 Humble
-        uses: ros-tooling/setup-ros@v0.4
-        with:
-          distribution: humble
+      - name: Set up ROS
+        run: |
+          sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key F42ED6FBAB17C654
+          sudo apt-get update
+          sudo apt-get install -y ros-${ROS_DISTRO}-rosmsg python3-rosdistro python3-rospkg
+          source /opt/ros/${ROS_DISTRO}/setup.bash
 
-      - name: Lint ROS .msg files
+      - name: Run rosmsg checks
         run: |
           if [ -d msg ]; then
             for f in $(find msg/ -name '*.msg'); do
               rosmsg show "$f" || exit 1
             done
-          else
-            echo "No msg directory found, skipping ROS msg lint."
           fi
