@@ -32,3 +32,12 @@ uint8 PLACEMENT_BACK = 5
 uint8 PLACEMENT_CUSTOM = 255
 
 uint8 lead_placement
+
+# Technique
+uint8 TECHNIQUE_TETRAPOLAR = 0
+uint8 TECHNIQUE_EIGHT_ELECTRODE = 1
+uint8 TECHNIQUE_UNKNOWN = 255
+
+uint8 technique
+
+healthcare_msgs/FilterBase filter

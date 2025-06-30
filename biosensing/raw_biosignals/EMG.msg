@@ -1,6 +1,6 @@
 std_msgs/Header header
 
-string session_id          # Optional: link to session or recording
+string session_id
 
-float32[] emg              # EMG signal amplitude samples (units defined in EMGInfo)
-float32[] signal_quality   # Quality scores per sample, 0 (poor) to 1 (excellent)
+float32[] emg
+float32[] signal_quality

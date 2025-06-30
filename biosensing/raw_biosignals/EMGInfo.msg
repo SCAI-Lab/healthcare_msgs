@@ -11,9 +11,14 @@ uint8 electrode_location
 uint8 external_devices
 string external_devices_label
 
-uint8 units
+# Units
+uint8 UNIT_MV = 0
+uint8 UNIT_UV = 1
+uint8 UNIT_COUNTS = 2
 
+uint8 units
 float32 gain
+uint8 adc_resolution
 
 # Electrode type enum
 uint8 ELECTRODE_SURFACE = 0
@@ -33,7 +38,7 @@ uint8 LOCATION_BACK = 4
 uint8 LOCATION_ABDOMINAL = 5
 uint8 LOCATION_CUSTOM = 255
 
-uint8 electrode_location
+uint8 electrode_placement
 
 # External device enum
 uint8 DEVICE_TENS = 0              # Transcutaneous electrical nerve stimulation
@@ -42,3 +47,12 @@ uint8 DEVICE_EMG_TRIGGER = 2      # Trigger device for timing
 uint8 DEVICE_CUSTOM = 255
 
 uint8 external_devices[]             # Use above enums
+
+# Signal Mode
+uint8 MODE_SURFACE = 0
+uint8 MODE_INTRAMUSCULAR = 1
+uint8 MODE_UNKNOWN = 255
+
+uint8 signal_mode
+
+healthcare_msgs/FilterBase filter

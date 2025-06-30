@@ -40,3 +40,11 @@ float32 gazefield_background_light_brightness  # in cd/m²
 
 # Light/dark phase durations in seconds (pairs: light phase duration, dark phase duration)
 float32[] length_light_dark_phase
+
+# Signal Mode
+uint8 MODE_SURFACE = 0
+uint8 MODE_UNKNOWN = 255
+
+uint8 signal_mode
+
+healthcare_msgs/FilterBase filter

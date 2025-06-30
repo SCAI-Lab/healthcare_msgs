@@ -19,6 +19,13 @@ float32 gain                   # Gain applied per wavelength
 
 uint16 wavelengths             # Number of wavelengths in [nm] or a single wavelength if only one is used
 
+# Measuring mode enum
+uint8 MODE_TRANSMISSIVE_ABSORPTION = 0
+uint8 MODE_REFLECTIVE = 1
+uint8 MODE_UNKNOWN = 255
+
+uint8 measuring_mode
+
 # PPG Sensor Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0
 uint8 PLACEMENT_FINGER = 1
@@ -36,9 +43,6 @@ uint8 PLACEMENT_CUSTOM = 255
 
 uint8 sensor_placement
 
-# Measuring mode enum
-uint8 MODE_TRANSMISSIVE_ABSORPTION = 0
-uint8 MODE_REFLECTIVE = 1
-uint8 MODE_UNKNOWN = 255
 
-uint8 measuring_mode
+
+healthcare_msgs/FilterBase filter

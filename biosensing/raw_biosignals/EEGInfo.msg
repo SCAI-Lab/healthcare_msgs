@@ -49,3 +49,12 @@ uint8 METHOD_105 = 2
 uint8 METHOD_CUSTOM = 255
 
 uint8 electrode_placement_method
+
+# Signal Mode
+uint8 MODE_SURFACE = 0
+uint8 MODE_INTRACRANIAL = 1
+uint8 MODE_UNKNOWN = 255
+
+uint8 signal_mode
+
+healthcare_msgs/FilterBase filter
