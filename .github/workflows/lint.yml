@@ -87,8 +87,8 @@ jobs:
 
       - name: Update ROS 2 apt key
         run: |
-          curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-          apt update
+          sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+          sudo apt update
 
       # Set up ROS 2 Humble for .msg linting
       - name: Setup ROS 2 Humble
