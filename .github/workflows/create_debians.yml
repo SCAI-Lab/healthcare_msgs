@@ -56,7 +56,7 @@ jobs:
                         dpkg-dev fakeroot devscripts build-essential \
                         debhelper dh-python \
                         python3-bloom
-
+          apt install -y git python3-ament-package | true
           source /opt/ros/$ROS_DISTRO/setup.bash
           mkdir -p /etc/ros/rosdep/sources.list.d
 
