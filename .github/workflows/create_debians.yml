@@ -47,23 +47,13 @@ jobs:
           OS_VERSION=$2
 
           apt update
-          DEBIAN_FRONTEND=noninteractive apt install -y \
-            git \
-            python3-colcon-common-extensions \
-            python3-rosdep \
-            dpkg-dev \
-            fakeroot \
-            devscripts \
-            build-essential \
-            debhelper \
-            dh-python \
-            python3-bloom \
-            python3-ament-package \
-            ros-$ROS_DISTRO-rcutils \
-            librcutils-dev
-
+          apt install -y git python3-colcon-common-extensions python3-rosdep \
+                        dpkg-dev fakeroot devscripts build-essential \
+                        debhelper dh-python \
+                        python3-bloom
+          apt install -y git python3-ament-package || true
+          apt install -y ros-$ROS_DISTRO-rcutils
           source /opt/ros/$ROS_DISTRO/setup.bash
-
           mkdir -p /etc/ros/rosdep/sources.list.d
 
           if [ -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then
@@ -121,8 +111,7 @@ jobs:
           docker run --rm --privileged --platform linux/${{ matrix.arch }} \
             -v "${{ github.workspace }}:/workspace" \
             -w /workspace \
-            ros:${{ matrix.ros_distro }} \
-            bash /workspace/build_in_docker.sh ${{ matrix.ros_distro }} ${{ matrix.os_version }}
+            ros:${{ matrix.ros_distro }}-ros-base bash /workspace/build_in_docker.sh ${{ matrix.ros_distro }} ${{ matrix.os_version }}
 
       - name: Upload .deb files as artifacts
         uses: actions/upload-artifact@v4
