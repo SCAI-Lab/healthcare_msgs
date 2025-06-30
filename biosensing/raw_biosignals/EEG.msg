@@ -1,9 +1,9 @@
 std_msgs/Header header
 
-string session_id
+string session_id                     # Match EEGInfo's session_id
 
 uint8 channel_size
-uint8 sample_size
+uint16 sample_size
 
-float32[] eeg                  # [channel]x[sample]
-float32[] signal_quality       # channel or per window
+float32[] eeg                         # Raw or filtered EEG values [channel]x[sample]
+float32[] signal_quality              # From 0 (poor) to 1 (excellent)

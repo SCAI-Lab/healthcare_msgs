@@ -1,43 +1,51 @@
-DeviceInfo   device_info
+DeviceInfo device_info
 
-float32 sampling_frequency           # Hz
-uint32 window_size_samples           # Number of samples per BCG.msg
-uint32 quality_window_size_samples   # Number of samples per quality value
+string session_id
 
-# Units enum
-uint8 UNIT_OHMS = 0
-uint8 UNIT_MOHMS = 1
-uint8 UNIT_COUNTS = 2
-uint8 UNIT_UNKNOWN = 255
+float32 sampling_frequency              # Hz
+uint32 window_size_samples              # Number of samples per ICG.msg
+uint32 quality_window_size_samples      # Number of samples used to compute quality value
 
-uint8 units
+# Units Enum
+uint8 UNIT_UNKNOWN = 0
+uint8 UNIT_OHMS = 1
+uint8 UNIT_MOHMS = 2
+uint8 UNIT_COUNTS = 3
 
-float32 gain                         # Multiplicative gain factor (e.g., 1.0 = unity, 2.0 = amplified)
+uint8 units                              # Signal units (e.g., UNIT_OHMS)
+float32 gain                             # Ohms/count or similar; set to 1.0 if already scaled
+uint8 adc_resolution                     # ADC bits (e.g., 12, 16); set to 0 if unknown
 
-# Lead types enum
-uint8 LEAD_TRANSTHORACIC = 0
-uint8 LEAD_FOUR_ELECTRODE = 1
-uint8 LEAD_SIX_ELECTRODE = 2
-uint8 LEAD_SPOT = 3
+# Lead Type Enum
+uint8 LEAD_UNKNOWN = 0
+uint8 LEAD_TRANSTHORACIC = 1
+uint8 LEAD_FOUR_ELECTRODE = 2
+uint8 LEAD_SIX_ELECTRODE = 3
+uint8 LEAD_SPOT = 4
+uint8 LEAD_CUSTOM = 255
 
 uint8 lead_type
 
-# Placement of ICG leads enum
-uint8 PLACEMENT_CHEST = 0
-uint8 PLACEMENT_LEFT_ARM = 1
-uint8 PLACEMENT_RIGHT_ARM = 2
-uint8 PLACEMENT_LEFT_LEG = 3
-uint8 PLACEMENT_RIGHT_LEG = 4
-uint8 PLACEMENT_BACK = 5
+# Electrode Placement Enum
+uint8 PLACEMENT_UNKNOWN = 0
+uint8 PLACEMENT_CHEST = 1
+uint8 PLACEMENT_BACK = 2
+uint8 PLACEMENT_LEFT_ARM = 3
+uint8 PLACEMENT_RIGHT_ARM = 4
+uint8 PLACEMENT_LEFT_LEG = 5
+uint8 PLACEMENT_RIGHT_LEG = 6
+uint8 PLACEMENT_NECK = 7
+uint8 PLACEMENT_ABDOMEN = 8
 uint8 PLACEMENT_CUSTOM = 255
 
-uint8 lead_placement
+uint8[] electrode_placement              # Support multiple placements
 
-# Technique
-uint8 TECHNIQUE_TETRAPOLAR = 0
-uint8 TECHNIQUE_EIGHT_ELECTRODE = 1
-uint8 TECHNIQUE_UNKNOWN = 255
+# Technique Enum
+uint8 TECHNIQUE_UNKNOWN = 0
+uint8 TECHNIQUE_TETRAPOLAR = 1
+uint8 TECHNIQUE_OCTAPOLAR = 2
+uint8 TECHNIQUE_CUSTOM = 255
 
 uint8 technique
 
-healthcare_msgs/FilterBase filter
+FilterBase filter

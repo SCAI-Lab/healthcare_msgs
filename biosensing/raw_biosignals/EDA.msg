@@ -1,11 +1,10 @@
 std_msgs/Header header
 
-string session_id
+string session_id                     # Match EDAInfo's session_id
 
-float32 sampling_frequency
-uint32 window_size_samples
+uint16 sample_size
 
-float32[] scl                        # Skin Conductance Level (tonic)
-float32[] scr                        # Skin Conductance Response (phasic)
-float32[] eda                        # Total signal (scl + scr)
-float32[] signal_quality             # Signal quality from 0–1 (excellent)
+float32[] scl                         # Skin Conductance Level (tonic)
+float32[] scr                         # Skin Conductance Response (phasic)
+float32[] eda                         # Sum of signals (scl + scr)
+float32[] signal_quality              # From 0 (poor) to 1 (excellent)

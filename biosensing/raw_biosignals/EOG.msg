@@ -1,6 +1,9 @@
 std_msgs/Header header
 
-string session_id         # Optional: link to recording session
+string session_id                     # Match EOGInfo's session_id
 
-float32[] eog             # EOG signal samples (e.g., in µV or mV; unit defined in EOGInfo)
-float32[] signal_quality  # Signal quality per sample (0=poor, 1=excellent)
+uint8 channel_size
+uint16 sample_size
+
+float32[] eog                         # Raw or filtered BCG values [channel]x[sample]
+float32[] signal_quality              # From 0 (poor) to 1 (excellent)

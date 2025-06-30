@@ -6,55 +6,69 @@ float32 sampling_frequency           # Hz
 uint32 window_size_samples           # Number of samples per BCG.msg
 uint32 quality_window_size_samples   # Number of samples per quality value
 
-# Units
-uint8 UNIT_UV = 0
-uint8 UNIT_MV = 1
-uint8 UNIT_COUNTS = 2
-uint8 UNIT_UNKNOWN = 255
+# Units Enum
+uint8 UNIT_UNKNOWN = 0
+uint8 UNIT_UV = 1
+uint8 UNIT_MV = 2
+uint8 UNIT_COUNTS = 3
 
-uint8 units                          # e.g., UNIT_UV, UNIT_COUNTS
+uint8 units                           # e.g., UNIT_MV
+float32 gain                          # Multiplicative factor (e.g., µV/count); set to 1.0 if signal is already scaled
+uint8 adc_resolution                  # Bits (e.g., 12, 16)
 
-float32 gain                         # Multiplicative gain factor (e.g., 1.0 = unity, 2.0 = amplified)
+# Electrode Placement Enum
+uint8 PLACEMENT_METHOD_UNKNOWN = 0
+uint8 PLACEMENT_METHOD_1020 = 1
+uint8 PLACEMENT_METHOD_1010 = 2
+uint8 PLACEMENT_METHOD_105 = 3
+uint8 PLACEMENT_METHOD_CUSTOM = 255
 
-uint8 channel_number                 # Index of the electrode/channel
+uint8[] electrode_placement           # Support multiple placements
 
-uint8 ELECTRODE_FP1 = 0
-uint8 ELECTRODE_FP2 = 1
-uint8 ELECTRODE_F3 = 2
-uint8 ELECTRODE_F4 = 3
-uint8 ELECTRODE_C3 = 4
-uint8 ELECTRODE_C4 = 5
-uint8 ELECTRODE_P3 = 6
-uint8 ELECTRODE_P4 = 7
-uint8 ELECTRODE_O1 = 8
-uint8 ELECTRODE_O2 = 9
-uint8 ELECTRODE_F7 = 10
-uint8 ELECTRODE_F8 = 11
-uint8 ELECTRODE_T3 = 12
-uint8 ELECTRODE_T4 = 13
-uint8 ELECTRODE_T5 = 14
-uint8 ELECTRODE_T6 = 15
-uint8 ELECTRODE_FZ = 16
-uint8 ELECTRODE_CZ = 17
-uint8 ELECTRODE_PZ = 18
-uint8 ELECTRODE_OZ = 19
+# Electrode Site Enum
+uint8 ELECTRODE_UNKNOWN = 0
+uint8 ELECTRODE_FP1 = 1
+uint8 ELECTRODE_FP2 = 2
+uint8 ELECTRODE_F3 = 3
+uint8 ELECTRODE_F4 = 4
+uint8 ELECTRODE_C3 = 5
+uint8 ELECTRODE_C4 = 6
+uint8 ELECTRODE_P3 = 7
+uint8 ELECTRODE_P4 = 8
+uint8 ELECTRODE_O1 = 9
+uint8 ELECTRODE_O2 = 10
+uint8 ELECTRODE_F7 = 11
+uint8 ELECTRODE_F8 = 12
+uint8 ELECTRODE_T3 = 13
+uint8 ELECTRODE_T4 = 14
+uint8 ELECTRODE_T5 = 15
+uint8 ELECTRODE_T6 = 16
+uint8 ELECTRODE_FZ = 17
+uint8 ELECTRODE_CZ = 18
+uint8 ELECTRODE_PZ = 19
+uint8 ELECTRODE_OZ = 20
 uint8 ELECTRODE_CUSTOM = 255
 
-uint8 electrode_type
+uint8 electrode_site
 
-# Electrode Placement Method enum
-uint8 METHOD_1020 = 0
-uint8 METHOD_1010 = 1
-uint8 METHOD_105 = 2
-uint8 METHOD_CUSTOM = 255
+# Electrode Physical Type Enum
+uint8 ELECTRODE_PHYSICAL_UNKNOWN = 0
+uint8 ELECTRODE_PHYSICAL_AGCL = 1
+uint8 ELECTRODE_PHYSICAL_GOLD_CUP = 2
+uint8 ELECTRODE_PHYSICAL_DRY = 3
+uint8 ELECTRODE_PHYSICAL_WET = 4
+uint8 ELECTRODE_PHYSICAL_HYDROGEL = 5
+uint8 ELECTRODE_PHYSICAL_MICRONEEDLE = 6
+uint8 ELECTRODE_PHYSICAL_CUSTOM = 255
 
-uint8 electrode_placement_method
+uint8 electrode_physical_type
 
-# Signal Mode
-uint8 MODE_SURFACE = 0
-uint8 MODE_INTRACRANIAL = 1
-uint8 MODE_UNKNOWN = 255
+# Signal Mode Enum
+uint8 SIGNAL_MODE_UNKNOWN = 0
+uint8 SIGNAL_MODE_SURFACE = 1
+uint8 SIGNAL_MODE_INTRACRANIAL = 2
+uint8 SIGNAL_MODE_CUSTOM = 255
 
 uint8 signal_mode
 
-healthcare_msgs/FilterBase filter
+FilterBase filter

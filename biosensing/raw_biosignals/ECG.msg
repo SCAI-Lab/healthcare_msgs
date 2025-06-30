@@ -2,5 +2,8 @@ std_msgs/Header header
 
 string session_id                     # Match ECGInfo's session_id
 
-float32[] ecg                         # Raw or filtered ECG values
+uint8 channel_size
+uint16 sample_size
+
+float32[] ecg                         # Raw or filtered ECG values [channel]x[sample]
 float32[] signal_quality              # From 0 (poor) to 1 (excellent)

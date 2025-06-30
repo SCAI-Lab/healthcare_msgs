@@ -1,6 +1,9 @@
 std_msgs/Header header
 
-string session_id
+string session_id                     # Match EMGInfo's session_id
 
-float32[] emg
-float32[] signal_quality
+uint8 channel_size
+uint16 sample_size
+
+float32[] emg                         # Raw or filtered EMG values [channel]x[sample]
+float32[] signal_quality              # From 0 (poor) to 1 (excellent)
