@@ -52,6 +52,7 @@ jobs:
                         debhelper dh-python \
                         python3-bloom
           apt install -y git python3-ament-package || true
+          apt install ros-$ROS_DISTRO-rcutils
           source /opt/ros/$ROS_DISTRO/setup.bash
           mkdir -p /etc/ros/rosdep/sources.list.d
 
@@ -67,7 +68,6 @@ jobs:
             echo "# Static override not found, starting with empty file" > /tmp/rosdep_combined_override.yaml
           fi
 
-          apt install ros-$ROS_DISTRO-rcutils
           for pkg in $(colcon list --names-only); do
             deb_pkg="ros-$ROS_DISTRO-${pkg//_/-}"
             echo "$pkg:" >> /tmp/rosdep_combined_override.yaml

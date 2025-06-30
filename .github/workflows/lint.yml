@@ -85,21 +85,18 @@ jobs:
             echo "No YAML files found, skipping yamllint."
           fi
 
-      - name: Update ROS2 GPG key
+      - name: Set up ROS 2 apt sources
         run: |
-          sudo apt-key del F42ED6FBAB17C654 || true
+          sudo apt update
+          sudo apt install -y curl gnupg lsb-release
           sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
-          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2-latest.list > /dev/null
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
           sudo apt update
 
-      # Set up ROS 2 Humble for .msg linting
-      - name: Set up ROS
+      - name: Install ROS 2 message tools
         run: |
-          sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key F42ED6FBAB17C654
-          sudo apt-get update
-          sudo apt-get install -y ros-humble-rosmsg python3-rosdistro python3-rospkg
+          sudo apt install -y ros-humble-rosmsg python3-rosdistro python3-rospkg
           source /opt/ros/humble/setup.bash
-
       - name: Run rosmsg checks
         run: |
           if [ -d msg ]; then
