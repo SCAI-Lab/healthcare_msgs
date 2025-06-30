@@ -10,7 +10,7 @@ uint8 TYPE_NOTCH = 7
 uint8 TYPE_SAVITZKY_GOLAY = 8
 uint8 TYPE_CUSTOM = 255
 
-uint8 filters[] # If several filters are applied, indicate the sequential order
+uint8[] filters         # If several filters are applied, indicate the sequential order
 
 BandPassFilter band_pass_filter
 ButterWorthFilter butter_worth_filter
