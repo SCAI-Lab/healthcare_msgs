@@ -2,18 +2,10 @@ DeviceInfo device_info
 
 string session_id
 
-float32 sampling_frequency           # Hz
-uint32 window_size_samples           # Number of samples per EDA.msg
-uint32 quality_window_size_samples   # Number of samples per quality value
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_MICROSIEMENS = 0
 uint8 UNIT_COUNTS = 1
-
-uint8 units                           # e.g., UNIT_MV
-float32 gain                          # Multiplicative factor (e.g., µV/count); set to 1.0 if signal is already scaled
-uint8 adc_resolution                  # Bits (e.g., 12, 16)
 
 # Electrode Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0

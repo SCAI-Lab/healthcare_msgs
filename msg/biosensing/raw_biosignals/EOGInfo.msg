@@ -2,19 +2,11 @@ DeviceInfo device_info
 
 string session_id
 
-float32 sampling_frequency              # Hz
-uint32 window_size_samples              # Number of samples per EOG.msg
-uint32 quality_window_size_samples      # Number of samples used per quality value
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_UV = 1
 uint8 UNIT_MV = 2
 uint8 UNIT_COUNTS = 3
-
-uint8 units                              # Signal units (e.g., UNIT_UV)
-float32 gain                             # µV/count or similar; set to 1.0 if already scaled
-uint8 adc_resolution                     # ADC bits (e.g., 12, 16); set to 0 if unknown
 
 # Electrode Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0

@@ -2,19 +2,11 @@ DeviceInfo device_info
 
 string session_id
 
-float32 sampling_frequency              # Hz
-uint32 window_size_samples              # Number of samples per ICG.msg
-uint32 quality_window_size_samples      # Number of samples used to compute quality value
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_OHMS = 1
 uint8 UNIT_MOHMS = 2
 uint8 UNIT_COUNTS = 3
-
-uint8 units                              # Signal units (e.g., UNIT_OHMS)
-float32 gain                             # Ohms/count or similar; set to 1.0 if already scaled
-uint8 adc_resolution                     # ADC bits (e.g., 12, 16); set to 0 if unknown
 
 # Lead Type Enum
 uint8 LEAD_UNKNOWN = 0

@@ -2,19 +2,11 @@ DeviceInfo device_info
 
 string session_id
 
-float32 sampling_frequency              # Hz
-uint32 window_size_samples              # Number of samples per EMG.msg
-uint32 quality_window_size_samples      # Number of samples used per signal quality value
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_MV = 1
 uint8 UNIT_UV = 2
 uint8 UNIT_COUNTS = 3
-
-uint8 units                             # e.g., UNIT_MV
-float32 gain                            # Multiplicative factor (e.g., µV/count); set to 1.0 if signal is already scaled
-uint8 adc_resolution                    # Bits (e.g., 12, 16); set to 0 if unknown
 
 # Electrode Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0
@@ -50,7 +42,6 @@ uint8 DEVICE_EMG_TRIGGER = 3            # Trigger/timing system
 uint8 DEVICE_CUSTOM = 255
 
 uint8[] external_devices                # Use DEVICE_* enum
-string[] external_device_labels         # Optional human-readable labels, must match order of external_devices
 
 # Signal Mode Enum
 uint8 MODE_UNKNOWN = 0

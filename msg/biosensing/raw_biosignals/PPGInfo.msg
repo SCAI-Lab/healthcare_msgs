@@ -2,19 +2,12 @@ DeviceInfo device_info
 
 string session_id
 
-float32 sampling_frequency               # Hz
-uint32 window_size_samples               # Number of samples per PPG.msg
-uint32 quality_window_size_samples       # Number of samples used to compute signal quality
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_COUNTS = 1                    # Raw ADC counts
 uint8 UNIT_MV = 2                        # Millivolts
 uint8 UNIT_UV = 3                        # Microvolts
 uint8 UNIT_RLU = 4                       # Relative Light Units (common in optical sensors)
-
-uint8 units
-float32 gain                             # Gain applied per channel (e.g., µV/count, or RLU/count)
 
 # Wavelengths in nanometers (e.g., 660 for red, 880 for IR, 940 for NIR)
 uint16[] wavelengths_nm                  # One entry per PPG channel; may be [660, 880, 940]

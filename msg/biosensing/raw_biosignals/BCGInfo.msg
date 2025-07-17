@@ -2,10 +2,6 @@ DeviceInfo device_info
 
 string session_id
 
-float32 sampling_frequency            # Hz
-uint32 window_size_samples            # Number of samples per BCG.msg
-uint32 quality_window_size_samples    # Number of samples per quality value
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_MV = 1                     # Millivolts (less common for BCG)
@@ -13,10 +9,6 @@ uint8 UNIT_UV = 2                     # Microvolts (biopotential signals, maybe 
 uint8 UNIT_COUNTS = 3                 # Raw ADC counts
 uint8 UNIT_M_S2 = 4                   # Meters per second squared (acceleration)
 uint8 UNIT_NEWTON = 5                 # Newtons (force)
-
-uint8 units                           # e.g., UNIT_MV
-float32 gain                          # Multiplicative factor (e.g., µV/count); set to 1.0 if signal is already scaled
-uint8 adc_resolution                  # Bits (e.g., 12, 16)
 
 # Sensor Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0
