@@ -8,6 +8,8 @@ uint8 UNIT_COUNTS = 3                 # Raw ADC counts
 uint8 UNIT_M_S2 = 4                   # Meters per second squared (acceleration)
 uint8 UNIT_NEWTON = 5                 # Newtons (force)
 
+uint8 units
+
 # Sensor Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0
 uint8 PLACEMENT_CHEST = 1

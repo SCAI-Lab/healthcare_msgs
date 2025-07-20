@@ -6,6 +6,8 @@ uint8 UNIT_OHMS = 1
 uint8 UNIT_MOHMS = 2
 uint8 UNIT_COUNTS = 3
 
+uint8 units
+
 # Lead Type Enum
 uint8 LEAD_UNKNOWN = 0
 uint8 LEAD_TRANSTHORACIC = 1

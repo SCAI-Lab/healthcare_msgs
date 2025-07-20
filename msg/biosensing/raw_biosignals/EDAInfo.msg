@@ -5,6 +5,8 @@ uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_MICROSIEMENS = 0
 uint8 UNIT_COUNTS = 1
 
+uint8 units
+
 # Electrode Placement Enum
 uint8 PLACEMENT_UNKNOWN = 0
 uint8 PLACEMENT_PALM = 1

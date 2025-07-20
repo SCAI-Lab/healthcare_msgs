@@ -6,6 +6,8 @@ uint8 UNIT_UV = 1
 uint8 UNIT_MV = 2
 uint8 UNIT_COUNTS = 3
 
+uint8 units
+
 # Electrode Placement Enum
 uint8 PLACEMENT_METHOD_UNKNOWN = 0
 uint8 PLACEMENT_METHOD_1020 = 1
