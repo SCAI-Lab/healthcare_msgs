@@ -1,6 +1,6 @@
 std_msgs/Header header
 
-string session_id                     # Match EOGInfo's session_id
+string session_id                     # Match DeviceInfo's session_id
 
 uint8 channel_size
 uint16 sample_size

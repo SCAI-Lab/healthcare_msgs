@@ -1,7 +1,5 @@
 DeviceInfo device_info
 
-string session_id
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_MV = 1                     # Millivolts (less common for BCG)

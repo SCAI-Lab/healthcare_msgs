@@ -1,7 +1,5 @@
 DeviceInfo device_info
 
-string session_id
-
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_COUNTS = 1                    # Raw ADC counts
@@ -9,8 +7,23 @@ uint8 UNIT_MV = 2                        # Millivolts
 uint8 UNIT_UV = 3                        # Microvolts
 uint8 UNIT_RLU = 4                       # Relative Light Units (common in optical sensors)
 
-# Wavelengths in nanometers (e.g., 660 for red, 880 for IR, 940 for NIR)
-uint16[] wavelengths_nm                  # One entry per PPG channel; may be [660, 880, 940]
+# Rule: If both wavelengths_nm and wavelengths_labels are present, they should be the same length and aligned.
+# If only one is present, downstream tools should fall back accordingly.
+
+# Nanometer value for each channel (e.g. [525, 880, 660])
+uint16[] wavelengths_nm
+
+# Wavelength Labels Enum
+uint8 WAVELENGTH_UNKNOWN = 0
+uint8 WAVELENGTH_GREEN = 1
+uint8 WAVELENGTH_RED = 2
+uint8 WAVELENGTH_IR = 3
+uint8 WAVELENGTH_BLUE = 4
+uint8 WAVELENGTH_YELLOW = 5
+uint8 WAVELENGTH_CUSTOM = 255
+
+# Label for each channel (optional, compact form)
+uint8[] wavelengths_labels
 
 # Measuring Mode Enum
 uint8 MODE_UNKNOWN = 0

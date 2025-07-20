@@ -1,6 +1,6 @@
 std_msgs/Header header
 
-string session_id                     # Match PPGInfo's session_id
+string session_id                     # Match DeviceInfo's session_id
 
 uint16 sample_size
 uint8 wavelength_size

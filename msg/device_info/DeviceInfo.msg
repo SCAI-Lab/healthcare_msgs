@@ -1,5 +1,7 @@
 std_msgs/Header header
 
+string session_id
+
 # Device identity
 string device_manufacturer       # Name of the device manufacturer
 string device_name               # Name of the device
