@@ -1,4 +1,4 @@
-name: Create Debian Packages for Multiple ROS Distros and Architectures
+name: Build Status
 
 on:
   pull_request:
