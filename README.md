@@ -1,6 +1,6 @@
 # healthcare_msgs
 
-[![Build Status](https://github.com/SCAI-Lab/healthcare_msgs/actions/workflows/build.yml/badge.svg)](https://github.com/SCAI-Lab/healthcare_msgs/actions/workflows/create_debians.yml/badge.svg)
+![Build Status](https://github.com/SCAI-Lab/healthcare_msgs/actions/workflows/create_debians.yml/badge.svg)
 [![ROS 2 Humble+](https://img.shields.io/badge/ROS%202-Humble+-blue.svg)](https://docs.ros.org/en/humble/index.html)
 [![ROS 2 Rolling+](https://img.shields.io/badge/ROS%202-Rolling+-blue.svg)](https://docs.ros.org/en/rolling/index.html)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
