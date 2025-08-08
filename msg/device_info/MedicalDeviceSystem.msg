@@ -19,7 +19,6 @@ builtin_interfaces/Duration tick_resolution         # Tick-Resolution in nanosec
 
 # Power and battery
 uint8 power_status              # 0=unknown, 1=on-mains, 2=on-battery, 3=both (0x0a47)
-
 float32 battery_level           # Normalized (0.0–1.0); Battery-Level (0x0a48)
 float32 remaining_battery_time  # Estimated time remaining on battery in seconds (0x0a49)
 
