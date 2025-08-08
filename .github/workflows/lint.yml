@@ -104,5 +104,7 @@ jobs:
             for f in $(find msg/ -name '*.msg'); do
               base=$(basename "$f" .msg)
               echo "$base"
+
+
             done
           fi
