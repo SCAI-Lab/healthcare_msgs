@@ -2,6 +2,9 @@ std_msgs/Header header
 
 string session_id
 
+# Medical Device System
+MedicalDeviceSystem mds
+
 # Device identity
 string device_manufacturer       # Name of the device manufacturer
 string device_name               # Name of the device
@@ -9,7 +12,6 @@ string device_type               # Type or purpose of the device (e.g., heart ra
 string device_serial_number      # Serial number for identification
 
 # Environmental requirements
-float32 battery_level                    # Remaining battery level from 0 to 1 [%]
 float32 minimal_operation_temperature    # Minimal operating temperature [°C]
 float32 maximal_operation_temperature    # Maximal operating temperature [°C]
 float32 maximal_relative_humidity        # Max tolerated humidity from 0 to 1 [%]
