@@ -1,0 +1,66 @@
+DeviceInfo   device_info
+
+# Units Enum
+uint8 UNIT_UNKNOWN = 0
+uint8 UNIT_UV = 1
+uint8 UNIT_MV = 2
+uint8 UNIT_COUNTS = 3
+
+uint8 units
+
+# Electrode Placement Enum
+uint8 PLACEMENT_METHOD_UNKNOWN = 0
+uint8 PLACEMENT_METHOD_1020 = 1
+uint8 PLACEMENT_METHOD_1010 = 2
+uint8 PLACEMENT_METHOD_105 = 3
+uint8 PLACEMENT_METHOD_CUSTOM = 255
+
+uint8[] electrode_placement           # Support multiple placements
+
+# Electrode Site Enum
+uint8 ELECTRODE_UNKNOWN = 0
+uint8 ELECTRODE_FP1 = 1
+uint8 ELECTRODE_FP2 = 2
+uint8 ELECTRODE_F3 = 3
+uint8 ELECTRODE_F4 = 4
+uint8 ELECTRODE_C3 = 5
+uint8 ELECTRODE_C4 = 6
+uint8 ELECTRODE_P3 = 7
+uint8 ELECTRODE_P4 = 8
+uint8 ELECTRODE_O1 = 9
+uint8 ELECTRODE_O2 = 10
+uint8 ELECTRODE_F7 = 11
+uint8 ELECTRODE_F8 = 12
+uint8 ELECTRODE_T3 = 13
+uint8 ELECTRODE_T4 = 14
+uint8 ELECTRODE_T5 = 15
+uint8 ELECTRODE_T6 = 16
+uint8 ELECTRODE_FZ = 17
+uint8 ELECTRODE_CZ = 18
+uint8 ELECTRODE_PZ = 19
+uint8 ELECTRODE_OZ = 20
+uint8 ELECTRODE_CUSTOM = 255
+
+uint8 electrode_site
+
+# Electrode Physical Type Enum
+uint8 ELECTRODE_PHYSICAL_UNKNOWN = 0
+uint8 ELECTRODE_PHYSICAL_AGCL = 1
+uint8 ELECTRODE_PHYSICAL_GOLD_CUP = 2
+uint8 ELECTRODE_PHYSICAL_DRY = 3
+uint8 ELECTRODE_PHYSICAL_WET = 4
+uint8 ELECTRODE_PHYSICAL_HYDROGEL = 5
+uint8 ELECTRODE_PHYSICAL_MICRONEEDLE = 6
+uint8 ELECTRODE_PHYSICAL_CUSTOM = 255
+
+uint8 electrode_physical_type
+
+# Signal Mode Enum
+uint8 SIGNAL_MODE_UNKNOWN = 0
+uint8 SIGNAL_MODE_SURFACE = 1
+uint8 SIGNAL_MODE_INTRACRANIAL = 2
+uint8 SIGNAL_MODE_CUSTOM = 255
+
+uint8 signal_mode
+
+FilterBase filter
