@@ -13,7 +13,7 @@ from std_msgs.msg import Header
 """
 EEG Data Acquisition Skeleton
 -----------------------------
-This class handles the Data Acquisition part of the pipeline.
+This class handles the Data Acquisition part of the  EEG pipeline.
 
 It uses the ROS messages EEG.msg and EEGInfo.msg.
 

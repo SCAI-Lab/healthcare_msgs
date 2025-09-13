@@ -15,7 +15,7 @@ uint8 PLACEMENT_METHOD_1010 = 2
 uint8 PLACEMENT_METHOD_105 = 3
 uint8 PLACEMENT_METHOD_CUSTOM = 255
 
-uint8[] electrode_placement           # Support multiple placements
+uint8[] montage     # Support multiple placements
 
 # Electrode Site Enum
 uint8 ELECTRODE_UNKNOWN = 0
