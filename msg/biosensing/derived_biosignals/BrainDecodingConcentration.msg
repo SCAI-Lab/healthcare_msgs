@@ -8,5 +8,5 @@ uint16 window_overlap
 
 
 
-boolean is_concentrated					# The output signal
+bool[] is_concentrated					# The output signal
 float32[] signal_quality                # From 0 (poor) to 1 (excellent)
