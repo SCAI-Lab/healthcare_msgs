@@ -1,6 +1,9 @@
 # Matching IEEE 11073 MDS (Medical Device System)
 std_msgs/Header header              # Maps to Date-and-Time (0x0a46)
+<<<<<<< HEAD
 string session_id
+=======
+>>>>>>> feature/healthcare_msgs
 
 uint16 handle                       # Locally unique number to identify one of the object instances within an agent (0x0000)
 string system_id                    # Unique system ID (0x0010)
