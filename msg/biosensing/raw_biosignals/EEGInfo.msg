@@ -58,11 +58,7 @@ uint8 ELECTRODE_PZ = 19
 uint8 ELECTRODE_OZ = 20
 uint8 ELECTRODE_CUSTOM = 255
 
-<<<<<<< HEAD
 uint8[] electrode_sites    # One per channel, in the order used in eeg[] data
-=======
-uint8 electrode_site
->>>>>>> feature/healthcare_msgs
 
 # Electrode Physical Type Enum
 uint8 ELECTRODE_PHYSICAL_UNKNOWN = 0
@@ -84,7 +80,6 @@ uint8 SIGNAL_MODE_CUSTOM = 255
 
 uint8 signal_mode
 
-<<<<<<< HEAD
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_UV = 1
@@ -125,8 +120,3 @@ string baseline_label
 
 float32 voltage_resolution			# Smallest measurable voltage increment in mV
 float32 amplification_gain			# Factor by which raw signals are amplified
-
-
-=======
-FilterBase filter
->>>>>>> feature/healthcare_msgs
