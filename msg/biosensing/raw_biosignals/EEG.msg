@@ -1,9 +1,10 @@
-std_msgs/Header header
+std_msgs/Header header 
 
-string session_id                     # Match DeviceInfo's session_id
+string session_id				# Match DeviceInfo's session_id
 
 uint8 channel_size
 uint16 sample_size
 
-float32[] eeg                         # Raw or filtered EEG values [channel]x[sample]
-float32[] signal_quality              # From 0 (poor) to 1 (excellent)
+float32[] eeg_flat				# Flattened raw or filtered EEG values: length = channel_count * sample_count. Access sample s of channel c as: eeg_flat[c * sample_count + s]
+
+float32[] signal_quality		# From 0 (poor) to 1 (excellent)
