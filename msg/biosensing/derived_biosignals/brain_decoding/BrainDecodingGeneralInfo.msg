@@ -1,17 +1,15 @@
-DeviceInfo device_info
-
 # Windowing that leads to the output
 string windowing_function
 uint16 window_size
 uint16 window_overlap
 
-# Output Method Enum (uint8)
+# Output Method Enum
 uint8 OUTPUT_METHOD_UNKNOWN           = 0
 uint8 OUTPUT_METHOD_SINGLE_WINDOW     = 1
 uint8 OUTPUT_METHOD_MULTIPLE_WINDOW   = 2
 uint8 OUTPUT_METHOD_AVERAGE           = 3
-uint8 OUTPUT_METHOD_SAMPLE_WISE		  = 4   # renamed to avoid duplicate name
-uint8 OUTPUT_METHOD_CUSTOM            = 255 # for user-defined / experimental output method
+uint8 OUTPUT_METHOD_SAMPLE_WISE		  = 4   
+uint8 OUTPUT_METHOD_CUSTOM            = 255 
 
 uint8 output_method
 
@@ -54,6 +52,6 @@ uint8 EEG_FEATURE_SSL_FEATURES        = 34
 uint8 EEG_FEATURE_STAT_FEATURES       = 40
 
 # Custom Feature
-uint8 EEG_FEATURE_CUSTOM              = 255  # for user-defined / experimental features
+uint8 EEG_FEATURE_CUSTOM              = 255  
 
-uint8[] selected_features  # list of features used, values from EEG Feature Enum 
+uint8[] selected_features						
