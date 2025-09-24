@@ -1,5 +1,7 @@
 DeviceInfo   device_info
 
+uint8 channel_size		# Moved from EEG
+
 # Units Enum
 uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_UV = 1
@@ -85,6 +87,7 @@ uint8 UNIT_UNKNOWN = 0
 uint8 UNIT_UV = 1
 uint8 UNIT_MV = 2
 uint8 UNIT_COUNTS = 3
+uint8 UNIT_CUSTOM = 255
 
 uint8 units
 
@@ -115,7 +118,7 @@ uint8 ACQUISITION_TYPE_CUSTOM = 255
 uint8 baseline_correction_method
 
 # For baseline labels
-uint8 baseline_recording_length		# Duration or presence of baseline measurement period in the second	
+uint16 baseline_recording_length	# Duration or presence of baseline measurement period in the second	
 string baseline_label
 
 float32 voltage_resolution			# Smallest measurable voltage increment in mV
