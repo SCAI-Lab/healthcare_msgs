@@ -102,18 +102,18 @@ uint8 ACQUISITION_TYPE_CUSTOM = 255
 
 uint8 acquisition_type
 
-# --- Baseline Info ---
+# Baseline Info
 float32 baseline_duration_s
 bool baseline_correction_applied
 string baseline_label
 
 # Baseline correcting method Enum
-uint8 BASELINE_CORRECTION_UNKNOWN = 0
-uint8 ACQUISITION_TYPE_CENTER = 1
-uint8 ACQUISITION_TYPE_DEDICATED_ELECTRODE = 2
-uint8 ACQUISITION_TYPE_MEAN = 3
-uint8 BASELINE_CORRECTION_LABEL = 4
-uint8 ACQUISITION_TYPE_CUSTOM = 255
+uint8 BASELINE_CORRECTION_UNKNOWN =				0
+uint8 ACQUISITION_TYPE_CENTER =					1
+uint8 ACQUISITION_TYPE_DEDICATED_ELECTRODE =	2
+uint8 ACQUISITION_TYPE_MEAN =					3
+uint8 BASELINE_CORRECTION_LABEL =				4
+uint8 ACQUISITION_TYPE_CUSTOM =					255
 
 uint8 baseline_correction_method
 
@@ -123,3 +123,21 @@ string baseline_label
 
 float32 voltage_resolution			# Smallest measurable voltage increment in mV
 float32 amplification_gain			# Factor by which raw signals are amplified
+
+# EEG Source File Format Enum
+uint8 FILE_FORMAT_UNKNOWN      = 0   # Default / undefined
+
+# Common universal formats
+uint8 FILE_FORMAT_CSV          = 1   # Comma-separated values
+uint8 FILE_FORMAT_NUMPY        = 2   # NumPy arrays (.npy, .npz)
+int8 FILE_FORMAT_EDF          =  3  # European Data Format
+
+# Biomedical acquisition formats
+uint8 FILE_FORMAT_BDF          = 11  # BioSemi Data Format
+uint8 FILE_FORMAT_BRAINVISION  = 12  # BrainVision EEG 
+uint8 FILE_FORMAT_FIF          = 13  # MNE’s native 
+
+uint8 FILE_FORMAT_CUSTOM       = 255 
+
+uint8 source_file_formart
+
