@@ -16,4 +16,3 @@ uint8 SLEEP_STAGE_N2         = 3   # NREM Stage 2 - stable sleep
 uint8 SLEEP_STAGE_N3         = 4   # NREM Stage 3 - deep sleep
 uint8 SLEEP_STAGE_REM        = 5   # REM sleep - dreaming, rapid eye movement
 uint8 SLEEP_STAGE_CUSTOM     = 255 
-

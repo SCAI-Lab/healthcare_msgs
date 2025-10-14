@@ -7,7 +7,7 @@ uint16 window_overlap
 uint8 OUTPUT_METHOD_UNKNOWN           = 0
 uint8 OUTPUT_METHOD_SINGLE_WINDOW     = 1
 uint8 OUTPUT_METHOD_MULTIPLE_WINDOW   = 2
-uint8 OUTPUT_METHOD_AVERAGE           = 3
+uint8 OUTPUT_METHOD_AVERAGE           = 3All
 uint8 OUTPUT_METHOD_SAMPLE_WISE		  = 4   
 uint8 OUTPUT_METHOD_CUSTOM            = 255 
 
@@ -19,8 +19,26 @@ uint16 num_windows_per_output					# For multiple-window or averaging methods (on
 string classifier_model_name
 string model_version
 
+
+# EEG Preprocessing Enum
+int8 EEG_FEATURE_UNKNOWN            = 0
+
+uint8 EEG_PREPROC_BANDPASS          = 1  # Bandpass filter applied
+uint8 EEG_PREPROC_NOTCH             = 2  # Notch filter (e.g., 50/60 Hz)
+uint8 EEG_PREPROC_ICA               = 3  # Independent Component Analysis
+uint8 EEG_PREPROC_CAR               = 4  # Common Average Reference
+uint8 EEG_PREPROC_ARTEFACT_REJ      = 5  # Artifact rejection/interpolation
+uint8 EEG_PREPROC_BASELINE_CORR     = 6  # Baseline correction
+uint8 EEG_PREPROC_DOWNSAMPLE        = 7  # Downsampling
+uint8 EEG_PREPROC_SEGMENTED         = 8  # Epoching / segmentation
+
+uint8 EEG_FEATURE_CUSTOM            = 255 
+
+uint8[] selected_preprocessing						
+
+
 # EEG Feature Enum
-uint8 EEG_FEATURE_UNKNOWN             = 0
+uint8 EEG_FEATURE_UNKNOWN            = 0
 
 
 # Frequency Domain
@@ -65,7 +83,6 @@ uint8 EEG_FEATURE_XDAWN                 = 52  # xDAWN spatial filtering to enhan
 # cross-category fusion 
 uint8 EEG_FEATURE_FUSION                = 60  # Combines multiple feature types into a single feature vector
 
-# Custom Feature
 uint8 EEG_FEATURE_CUSTOM              = 255  
 
 uint8[] selected_features						

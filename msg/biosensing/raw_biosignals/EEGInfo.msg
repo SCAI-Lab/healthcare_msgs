@@ -11,6 +11,24 @@ uint8 UNIT_COUNTS = 3
 uint8 units
 
 
+
+# EEG Preprocessing Enum
+int8 EEG_FEATURE_UNKNOWN            = 0
+
+uint8 EEG_PREPROC_BANDPASS          = 1  # Bandpass filter applied
+uint8 EEG_PREPROC_NOTCH             = 2  # Notch filter (e.g., 50/60 Hz)
+uint8 EEG_PREPROC_ICA               = 3  # Independent Component Analysis
+uint8 EEG_PREPROC_CAR               = 4  # Common Average Reference
+uint8 EEG_PREPROC_ARTEFACT_REJ      = 5  # Artifact rejection/interpolation
+uint8 EEG_PREPROC_BASELINE_CORR     = 6  # Baseline correction
+uint8 EEG_PREPROC_DOWNSAMPLE        = 7  # Downsampling
+uint8 EEG_PREPROC_SEGMENTED         = 8  # Epoching / segmentation
+
+uint8 EEG_FEATURE_CUSTOM            = 255 
+
+uint8[] selected_preprocessing	
+
+
 # Montage Type Enum
 uint8 MONTAGE_TYPE_UNKNOWN=0
 uint8 MONTAGE_TYPE_BIPOLAR=1
@@ -135,7 +153,7 @@ int8 FILE_FORMAT_EDF          =  3  # European Data Format
 # Biomedical acquisition formats
 uint8 FILE_FORMAT_BDF          = 11  # BioSemi Data Format
 uint8 FILE_FORMAT_BRAINVISION  = 12  # BrainVision EEG 
-uint8 FILE_FORMAT_FIF          = 13  # MNE’s native 
+uint8 FILE_FORMAT_FIF          = 13  # MNEï¿½s native 
 
 uint8 FILE_FORMAT_CUSTOM       = 255 
 
