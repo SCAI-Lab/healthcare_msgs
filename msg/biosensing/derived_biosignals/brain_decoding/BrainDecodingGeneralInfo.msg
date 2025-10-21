@@ -7,7 +7,7 @@ uint16 window_overlap
 uint8 OUTPUT_METHOD_UNKNOWN           = 0
 uint8 OUTPUT_METHOD_SINGLE_WINDOW     = 1
 uint8 OUTPUT_METHOD_MULTIPLE_WINDOW   = 2
-uint8 OUTPUT_METHOD_AVERAGE           = 3All
+uint8 OUTPUT_METHOD_AVERAGE           = 3
 uint8 OUTPUT_METHOD_SAMPLE_WISE		  = 4   
 uint8 OUTPUT_METHOD_CUSTOM            = 255 
 
