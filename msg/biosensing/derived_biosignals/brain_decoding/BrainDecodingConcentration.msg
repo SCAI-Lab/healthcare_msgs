@@ -7,4 +7,4 @@ uint16 sample_size
 float32  concentration_score			# 0-1 normalized concentration
 float32  confidence					    # Optional model confidence
 bool is_concentrated					# Decision of the output model
-float32 signal_quality                  # From 0 (poor) to 1 (excellent)
+float32 quality                         # From 0 (poor) to 1 (excellent) takes into account not only the signal quality, but also other factors, e.g. whether some sensor might be wrongly connected

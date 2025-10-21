@@ -100,15 +100,6 @@ uint8 SIGNAL_MODE_CUSTOM = 255
 
 uint8 signal_mode
 
-# Units Enum
-uint8 UNIT_UNKNOWN = 0
-uint8 UNIT_UV = 1
-uint8 UNIT_MV = 2
-uint8 UNIT_COUNTS = 3
-uint8 UNIT_CUSTOM = 255
-
-uint8 units
-
 FilterBase[] filters
 
 # Acquisition Type Enum
@@ -144,18 +135,3 @@ float32 amplification_gain			# Factor by which raw signals are amplified
 
 # EEG Source File Format Enum
 uint8 FILE_FORMAT_UNKNOWN      = 0   # Default / undefined
-
-# Common universal formats
-uint8 FILE_FORMAT_CSV          = 1   # Comma-separated values
-uint8 FILE_FORMAT_NUMPY        = 2   # NumPy arrays (.npy, .npz)
-int8 FILE_FORMAT_EDF          =  3  # European Data Format
-
-# Biomedical acquisition formats
-uint8 FILE_FORMAT_BDF          = 11  # BioSemi Data Format
-uint8 FILE_FORMAT_BRAINVISION  = 12  # BrainVision EEG 
-uint8 FILE_FORMAT_FIF          = 13  # MNE�s native 
-
-uint8 FILE_FORMAT_CUSTOM       = 255 
-
-uint8 source_file_formart
-
