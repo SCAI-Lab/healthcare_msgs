@@ -1,8 +1,12 @@
 name: Publish APT Repository
 
+# on:
+#   release:
+#     types: [published]
 on:
-  release:
-    types: [published]
+  pull_request:
+    branches:
+      - '**'
 
 jobs:
   publish-apt:
