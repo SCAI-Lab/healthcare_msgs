@@ -1,9 +1,11 @@
 name: Publish APT Repository
 
-# on:
-#   release:
-#     types: [published]
 on:
+  workflow_run:
+    workflows: ["Build Status"]
+    types: [completed]
+  # release:
+  #   types: [published]
   pull_request:
     branches:
       - '**'
