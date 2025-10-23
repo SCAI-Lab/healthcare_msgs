@@ -32,7 +32,7 @@ uint8 ELECTRODE_WIRE = 3
 uint8 ELECTRODE_INTERFERENTIAL = 4
 uint8 ELECTRODE_CUSTOM = 255
 
-uint8 electrode_type
+uint8[] electrode_type
 
 # External Devices Enum (used during EMG recording)
 uint8 DEVICE_UNKNOWN = 0
@@ -51,4 +51,4 @@ uint8 MODE_CUSTOM = 255
 
 uint8 signal_mode
 
-FilterBase filter
+FilterBase filters

@@ -24,6 +24,6 @@ uint8 PLACEMENT_FINGER = 3
 uint8 PLACEMENT_EARLOBE = 4
 uint8 PLACEMENT_CUSTOM = 255
 
-uint8 sensor_placement            # e.g., PLACEMENT_CHEST
+uint8[] sensor_placement          # e.g., PLACEMENT_CHEST
 
-FilterBase filter
+FilterBase filters

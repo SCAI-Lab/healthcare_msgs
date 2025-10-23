@@ -41,7 +41,7 @@ uint8 ELECTRODE_PZ = 19
 uint8 ELECTRODE_OZ = 20
 uint8 ELECTRODE_CUSTOM = 255
 
-uint8 electrode_site
+uint8[] electrode_site
 
 # Electrode Physical Type Enum
 uint8 ELECTRODE_PHYSICAL_UNKNOWN = 0
@@ -53,7 +53,7 @@ uint8 ELECTRODE_PHYSICAL_HYDROGEL = 5
 uint8 ELECTRODE_PHYSICAL_MICRONEEDLE = 6
 uint8 ELECTRODE_PHYSICAL_CUSTOM = 255
 
-uint8 electrode_physical_type
+uint8[] electrode_physical_type
 
 # Signal Mode Enum
 uint8 SIGNAL_MODE_UNKNOWN = 0
@@ -63,4 +63,4 @@ uint8 SIGNAL_MODE_CUSTOM = 255
 
 uint8 signal_mode
 
-FilterBase filter
+FilterBase filters

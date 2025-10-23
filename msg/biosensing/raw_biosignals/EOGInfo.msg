@@ -58,4 +58,4 @@ float32 gazefield_background_light_brightness  # cd/m²
 # Alternating light/dark phases (e.g., for visual stimulation protocols)
 float32[] length_light_dark_phase         # [light_sec1, dark_sec1, light_sec2, dark_sec2, ...]
 
-FilterBase filter
+FilterBase filters
