@@ -2,13 +2,10 @@ name: Publish APT Repository
 
 on:
   workflow_run:
-    workflows: ["Build Status"]
+    workflows: ["Build and Create Debians"]
     types: [completed]
   # release:
   #   types: [published]
-  pull_request:
-    branches:
-      - '**'
 
 jobs:
   publish-apt:

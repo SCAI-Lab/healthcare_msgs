@@ -1,4 +1,4 @@
-name: Build Status
+name: Build and Create Debians
 
 on:
   pull_request:
