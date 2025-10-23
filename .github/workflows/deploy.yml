@@ -1,0 +1,53 @@
+name: Publish APT Repository
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-apt:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y aptly gnupg curl
+
+      - name: Download .deb artifacts from build workflow
+        uses: actions/download-artifact@v4
+        with:
+          # This should match the artifact name in your build workflow
+          name: ros-debian-packages-humble-amd64
+          path: ./debs/amd64
+
+      - name: Download .deb artifacts (arm64)
+        uses: actions/download-artifact@v4
+        with:
+          name: ros-debian-packages-humble-arm64
+          path: ./debs/arm64
+
+      # Repeat the above download step for other distros/arches if needed
+
+      - name: Create APT repo
+        run: |
+          mkdir -p repo
+          cd repo
+          # Create separate repos for each architecture
+          aptly repo create -distribution=stable -component=main myrepo-amd64
+          aptly repo add myrepo-amd64 ../debs/amd64/*.deb
+
+          aptly repo create -distribution=stable -component=main myrepo-arm64
+          aptly repo add myrepo-arm64 ../debs/arm64/*.deb
+
+          # Publish repos (multi-arch)
+          aptly publish repo -architectures=amd64 myrepo-amd64
+          aptly publish repo -architectures=arm64 myrepo-arm64
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./repo/public
