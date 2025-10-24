@@ -3,9 +3,8 @@ name: Publish APT Repository
 on:
   workflow_run:
     workflows: ["Build and Create Debians"]
-    types: [completed]
-  # release:
-  #   types: [published]
+    types:
+      - completed
 
 jobs:
   publish-apt:
@@ -19,36 +18,61 @@ jobs:
           sudo apt update
           sudo apt install -y aptly gnupg curl
 
-      - name: Download .deb artifacts from build workflow
+      # --- Download all built artifacts ---
+      - name: Download .deb artifacts (humble amd64)
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
-          # This should match the artifact name in your build workflow
           name: ros-debian-packages-humble-amd64
           path: ./debs/amd64
 
-      - name: Download .deb artifacts (arm64)
+      - name: Download .deb artifacts (humble arm64)
         uses: actions/download-artifact@v4
+        continue-on-error: true
         with:
           name: ros-debian-packages-humble-arm64
           path: ./debs/arm64
 
-      # Repeat the above download step for other distros/arches if needed
+      - name: Download .deb artifacts (rolling amd64)
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: ros-debian-packages-rolling-amd64
+          path: ./debs/rolling-amd64
 
-      - name: Create APT repo
+      - name: Download .deb artifacts (rolling arm64)
+        uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: ros-debian-packages-rolling-arm64
+          path: ./debs/rolling-arm64
+
+      # --- Create APT repo ---
+      - name: Create APT repository
         run: |
           mkdir -p repo
           cd repo
-          # Create separate repos for each architecture
+
+          # Create & populate per-arch repos
           aptly repo create -distribution=stable -component=main myrepo-amd64
-          aptly repo add myrepo-amd64 ../debs/amd64/*.deb
+          aptly repo add myrepo-amd64 ../debs/amd64/*.deb || true
 
           aptly repo create -distribution=stable -component=main myrepo-arm64
-          aptly repo add myrepo-arm64 ../debs/arm64/*.deb
+          aptly repo add myrepo-arm64 ../debs/arm64/*.deb || true
 
-          # Publish repos (multi-arch)
+          aptly repo create -distribution=stable -component=main myrepo-rolling-amd64
+          aptly repo add myrepo-rolling-amd64 ../debs/rolling-amd64/*.deb || true
+
+          aptly repo create -distribution=stable -component=main myrepo-rolling-arm64
+          aptly repo add myrepo-rolling-arm64 ../debs/rolling-arm64/*.deb || true
+
+          # Publish repositories (multi-arch)
           aptly publish repo -architectures=amd64 myrepo-amd64
           aptly publish repo -architectures=arm64 myrepo-arm64
+          aptly publish repo -architectures=amd64 myrepo-rolling-amd64
+          aptly publish repo -architectures=arm64 myrepo-rolling-arm64
 
+      # --- Deploy to GitHub Pages ---
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
