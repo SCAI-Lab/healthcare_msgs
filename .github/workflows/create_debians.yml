@@ -120,21 +120,21 @@ jobs:
           path: debs/*.deb
       - name: Install aptly
         run: |
-          apt update
-          apt install -y aptly gnupg curl
+          sudo apt update
+          sudo apt install -y aptly gnupg curl
 
       - name: Create APT repository
         run: |
           mkdir -p repo
           cd repo
-          # Only add the current job's architecture/distro
           ARCH=${{ matrix.arch }}
           DISTRO=${{ matrix.ros_distro }}
-          mkdir -p ../debs/$ARCH
-          mv ../debs/*.deb ../debs/$ARCH/
-          aptly repo create -distribution=stable -component=main myrepo-$DISTRO-$ARCH
-          aptly repo add myrepo-$DISTRO-$ARCH ../debs/$ARCH/*.deb
-          aptly publish repo -architectures=$ARCH myrepo-$DISTRO-$ARCH
+          OS_VERSION=${{ matrix.os_version }}
+
+          aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main myrepo-${DISTRO}-${ARCH}
+          aptly repo add myrepo-${DISTRO}-${ARCH} ../debs/*.deb
+
+          aptly publish repo -architectures=$ARCH myrepo-${DISTRO}-${ARCH}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
