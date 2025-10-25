@@ -125,15 +125,14 @@ jobs:
           for f in debs/*.deb; do
             echo "Recompressing $f..."
             dpkg-deb -R "$f" tmp_deb
-            dpkg-deb -bZgzip tmp_deb "debs_recompressed/$(basename $f)"
+            dpkg-deb -bZgzip tmp_deb "debs_recompressed/$(basename "$f")"
             rm -rf tmp_deb
           done
-          mv debs_recompressed debs
 
-      - name: Install aptly
-        run: |
-          sudo apt update
-          sudo apt install -y aptly gnupg curl
+          echo "Replacing old debs with recompressed ones..."
+          sudo rm -rf debs
+          sudo mv debs_recompressed debs
+          sudo chown -R $USER:$USER debs
 
       - name: Create APT repository
         run: |
