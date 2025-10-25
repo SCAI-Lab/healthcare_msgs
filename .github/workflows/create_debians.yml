@@ -134,6 +134,15 @@ jobs:
           sudo mv debs_recompressed debs
           sudo chown -R $USER:$USER debs
 
+      - name: Install Aptly
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnupg software-properties-common
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9E3E53F19C7DE460
+          echo "deb https://repo.aptly.info/ jammy main" | sudo tee /etc/apt/sources.list.d/aptly.list
+          sudo apt-get update
+          sudo apt-get install -y aptly
+
       - name: Create APT repository
         run: |
           mkdir -p repo
