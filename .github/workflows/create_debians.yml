@@ -118,6 +118,18 @@ jobs:
         with:
           name: ros-debian-packages-${{ matrix.ros_distro }}-${{ matrix.arch }}
           path: debs/*.deb
+
+      - name: Recompress .deb files for aptly compatibility
+        run: |
+          mkdir -p debs_recompressed
+          for f in debs/*.deb; do
+            echo "Recompressing $f..."
+            dpkg-deb -R "$f" tmp_deb
+            dpkg-deb -bZgzip tmp_deb "debs_recompressed/$(basename $f)"
+            rm -rf tmp_deb
+          done
+          mv debs_recompressed debs
+
       - name: Install aptly
         run: |
           sudo apt update
