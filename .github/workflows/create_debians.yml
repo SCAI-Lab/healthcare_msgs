@@ -120,8 +120,8 @@ jobs:
           path: debs/*.deb
       - name: Install aptly
         run: |
-          sudo apt update
-          sudo apt install -y aptly gnupg curl
+          apt update
+          apt install -y aptly gnupg curl
 
       - name: Create APT repository
         run: |
