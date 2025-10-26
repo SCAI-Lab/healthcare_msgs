@@ -134,17 +134,25 @@ jobs:
           sudo mv debs_recompressed debs
           sudo chown -R $USER:$USER debs
 
-      - name: Install Aptly
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gnupg software-properties-common
-          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 9E3E53F19C7DE460
-          echo "deb https://repo.aptly.info/ jammy main" | sudo tee /etc/apt/sources.list.d/aptly.list
-          sudo apt-get update
-          sudo apt-get install -y aptly
 
-      - name: Create APT repository
+
+      - name: Create and publish APT repository
+        env:
+          GPG_PRIVATE_KEY_BASE64: ${{ secrets.GPG_PRIVATE_KEY_BASE64 }}
         run: |
+          set -e
+          sudo apt-get update
+          sudo apt-get install -y gnupg aptly
+
+          # Restore GPG key
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "$GPG_PRIVATE_KEY_BASE64" | base64 --decode | gpg --import
+
+          # Extract key ID
+          GPG_KEY=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
+          echo "Using GPG key $GPG_KEY"
+
           mkdir -p repo
           cd repo
           ARCH=${{ matrix.arch }}
@@ -154,10 +162,15 @@ jobs:
           aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main myrepo-${DISTRO}-${ARCH}
           aptly repo add myrepo-${DISTRO}-${ARCH} ../debs/*.deb
 
-          aptly publish repo -architectures=$ARCH myrepo-${DISTRO}-${ARCH}
+          # Publish signed repo
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" myrepo-${DISTRO}-${ARCH}
+
+          # Export public key for users
+          gpg --armor --export "$GPG_KEY" > public/KEY.gpg
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./repo/public
+          keep_files: true
