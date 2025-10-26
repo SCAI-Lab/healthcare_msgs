@@ -151,11 +151,11 @@ jobs:
           GPG_KEY=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
           echo "Using GPG key $GPG_KEY"
 
-          # Define output folder at repo root
+          # Define output folder at repo root, per ROS distro + architecture
           OUTPUT_DIR="${GITHUB_WORKSPACE}/gh-pages/${{ matrix.ros_distro }}-${{ matrix.arch }}"
           mkdir -p "$OUTPUT_DIR"
 
-          # Create APT repo inside a temporary folder
+          # Create a temporary aptly repo folder
           TEMP_REPO="${GITHUB_WORKSPACE}/repo_temp"
           rm -rf "$TEMP_REPO"
           mkdir -p "$TEMP_REPO"
@@ -165,19 +165,15 @@ jobs:
           ARCH=${{ matrix.arch }}
           OS_VERSION=${{ matrix.os_version }}
 
+          # Create local aptly repo
           aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main healthcare-msgs-${DISTRO}-${ARCH}
           aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ../debs/*.deb
 
-          # Publish signed repo into a folder, not directly into web root
-          PUBLISH_DIR="${TEMP_REPO}/public"
-          mkdir -p "$PUBLISH_DIR"
-          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" -skip-signing healthcare-msgs-${DISTRO}-${ARCH} filesystem:$PUBLISH_DIR
+          # Publish repo to OUTPUT_DIR using file:// URL
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH} file://"$OUTPUT_DIR"
 
           # Export GPG key for users
-          gpg --armor --export "$GPG_KEY" > "$PUBLISH_DIR/KEY.gpg"
-
-          # Copy everything to the per-arch folder in gh-pages
-          cp -r "$PUBLISH_DIR"/* "$OUTPUT_DIR/"
+          gpg --armor --export "$GPG_KEY" > "$OUTPUT_DIR/KEY.gpg"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
