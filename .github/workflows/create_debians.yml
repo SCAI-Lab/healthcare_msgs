@@ -134,8 +134,6 @@ jobs:
           sudo mv debs_recompressed debs
           sudo chown -R $USER:$USER debs
 
-
-
       - name: Create and publish APT repository
         env:
           GPG_PRIVATE_KEY_BASE64: ${{ secrets.GPG_PRIVATE_KEY_BASE64 }}
@@ -159,13 +157,14 @@ jobs:
           DISTRO=${{ matrix.ros_distro }}
           OS_VERSION=${{ matrix.os_version }}
 
-          aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main myrepo-${DISTRO}-${ARCH}
-          aptly repo add myrepo-${DISTRO}-${ARCH} ../debs/*.deb
+          aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main healthcare-msgs-${DISTRO}-${ARCH}
+          aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ../debs/*.deb
 
           # Publish signed repo
-          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" myrepo-${DISTRO}-${ARCH}
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH}
 
-          # Export public key for users
+          # Export public key for users (into the same public folder that will be deployed)
+          mkdir -p public
           gpg --armor --export "$GPG_KEY" > public/KEY.gpg
 
       - name: Deploy to GitHub Pages
