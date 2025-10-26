@@ -138,6 +138,7 @@ jobs:
           GPG_PRIVATE_KEY_BASE64: ${{ secrets.GPG_PRIVATE_KEY_BASE64 }}
         run: |
           set -e
+
           sudo apt-get update
           sudo apt-get install -y gnupg aptly
 
@@ -150,25 +151,37 @@ jobs:
           GPG_KEY=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
           echo "Using GPG key $GPG_KEY"
 
-          mkdir -p repo
-          cd repo
-          ARCH=${{ matrix.arch }}
+          # Define output folder at repo root
+          OUTPUT_DIR="${GITHUB_WORKSPACE}/gh-pages/${{ matrix.ros_distro }}-${{ matrix.arch }}"
+          mkdir -p "$OUTPUT_DIR"
+
+          # Create APT repo inside a temporary folder
+          TEMP_REPO="${GITHUB_WORKSPACE}/repo_temp"
+          rm -rf "$TEMP_REPO"
+          mkdir -p "$TEMP_REPO"
+          cd "$TEMP_REPO"
+
           DISTRO=${{ matrix.ros_distro }}
+          ARCH=${{ matrix.arch }}
           OS_VERSION=${{ matrix.os_version }}
 
           aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main healthcare-msgs-${DISTRO}-${ARCH}
           aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ../debs/*.deb
 
-          # Publish signed repo
-          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH}
+          # Publish signed repo into a folder, not directly into web root
+          PUBLISH_DIR="${TEMP_REPO}/public"
+          mkdir -p "$PUBLISH_DIR"
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" -skip-signing healthcare-msgs-${DISTRO}-${ARCH} filesystem:$PUBLISH_DIR
 
-          # Export public key for users (into the same public folder that will be deployed)
-          mkdir -p public
-          gpg --armor --export "$GPG_KEY" > public/KEY.gpg
+          # Export GPG key for users
+          gpg --armor --export "$GPG_KEY" > "$PUBLISH_DIR/KEY.gpg"
+
+          # Copy everything to the per-arch folder in gh-pages
+          cp -r "$PUBLISH_DIR"/* "$OUTPUT_DIR/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./healthcare_msgs/repo/public
+          publish_dir: ./gh-pages
           keep_files: true
