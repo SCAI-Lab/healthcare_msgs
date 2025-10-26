@@ -78,12 +78,25 @@ sudo apt update
 sudo apt install ros-humble-healthcare-msgs
 ```
 
+*** For ARM architecture, replace the first line with:
+
+```bash
+echo "deb [arch=arm64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ humble-jammy main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
+```
+
 For ROS 2 Rolling (Ubuntu 24.04 Noble):
 ```bash
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ rolling-noble main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
 sudo apt update
 sudo apt install ros-rolling-healthcare-msgs
 ```
+
+*** For ARM architecture, replace the first line with:
+
+```bash
+echo "deb [arch=arm64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ rolling-noble main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
+```
+
 
 ## 🔧 Build from Source
 Make sure your ROS 2 workspace is sourced:

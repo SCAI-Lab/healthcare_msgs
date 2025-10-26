@@ -150,21 +150,24 @@ jobs:
           GPG_KEY=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
           echo "Using GPG key $GPG_KEY"
 
-          mkdir -p repo
-          cd repo
           ARCH=${{ matrix.arch }}
           DISTRO=${{ matrix.ros_distro }}
           OS_VERSION=${{ matrix.os_version }}
 
+          # Ensure public folder exists at workspace root
+          mkdir -p repo/public
+
+          # Create local aptly repo
           aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main healthcare-msgs-${DISTRO}-${ARCH}
-          aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ../debs/*.deb
 
-          # Publish signed repo
-          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH}
+          # Add built .deb files
+          aptly repo add healthcare-msgs-${DISTRO}-${ARCH} debs/*.deb
 
-          # Export public key for users (into the same public folder that will be deployed)
-          mkdir -p public
-          gpg --armor --export "$GPG_KEY" > public/KEY.gpg
+          # Publish repo into repo/public (so GH Pages can deploy)
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" -root-dir=repo/public healthcare-msgs-${DISTRO}-${ARCH}
+
+          # Export public key for users
+          gpg --armor --export "$GPG_KEY" > repo/public/KEY.gpg
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
