@@ -19,9 +19,8 @@ uint16 num_windows_per_output					# For multiple-window or averaging methods (on
 string classifier_model_name
 string model_version
 
-
 # EEG Preprocessing Enum
-int8 EEG_FEATURE_UNKNOWN            = 0
+uint8 EEG_PREPROC_UNKNOWN            = 0
 
 uint8 EEG_PREPROC_BANDPASS          = 1  # Bandpass filter applied
 uint8 EEG_PREPROC_NOTCH             = 2  # Notch filter (e.g., 50/60 Hz)
@@ -32,10 +31,9 @@ uint8 EEG_PREPROC_BASELINE_CORR     = 6  # Baseline correction
 uint8 EEG_PREPROC_DOWNSAMPLE        = 7  # Downsampling
 uint8 EEG_PREPROC_SEGMENTED         = 8  # Epoching / segmentation
 
-uint8 EEG_FEATURE_CUSTOM            = 255 
+uint8 EEG_PREPROC_CUSTOM            = 255 
 
 uint8[] selected_preprocessing						
-
 
 # EEG Feature Enum
 uint8 EEG_FEATURE_UNKNOWN            = 0
