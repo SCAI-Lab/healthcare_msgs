@@ -6,7 +6,7 @@ uint16 sample_size
 # Output Values
 		
 float32  confidence					    # Optional model confidence			
-float32 signal_quality                  # From 0 (poor) to 1 (excellent)
+float32 quality                  # From 0 (poor) to 1 (excellent)
 
 # Sleep Stating Label Enum
 uint8 SLEEP_STAGE_UNKNOWN    = 0   # Undefined or not classified
