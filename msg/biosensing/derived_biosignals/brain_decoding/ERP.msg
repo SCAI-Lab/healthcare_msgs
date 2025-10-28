@@ -4,7 +4,7 @@ string session_id					# Match DeviceInfo's session_id
 uint16 sample_size
 
 # Output Values
-float32  confidence					# Optional model confidence
+float32  confidence					#  0-1 Optional model confidence
 float32 quality				        # From 0 (poor) to 1 (excellent)
 
 # ERP Label Enum

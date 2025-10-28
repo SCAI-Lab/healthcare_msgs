@@ -4,8 +4,8 @@ string session_id                           # Match DeviceInfo's session_id
 uint16 sample_size                          # Number of samples in this output window
 
 # Output values
-float32 confidence                          # Optional model confidence (0�1)
-float32 quality                      # From 0 (poor) to 1 (excellent)
+float32 confidence                          #  0-1 Optional model confidence l
+float32 quality                             # From 0 (poor) to 1 (excellent)
 float32 activation_power                    # Magnitude of user intent / signal strength
                                             # e.g., normalized band power, classifier activation, ERD/ERS
 # Motor Imagery Body Part Enum
