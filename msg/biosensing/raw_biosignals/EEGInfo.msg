@@ -133,5 +133,4 @@ string baseline_label
 float32 voltage_resolution			# Smallest measurable voltage increment in mV
 float32 amplification_gain			# Factor by which raw signals are amplified
 
-# EEG Source File Format Enum
-uint8 FILE_FORMAT_UNKNOWN      = 0   # Default / undefined
+string comments

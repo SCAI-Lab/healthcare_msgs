@@ -10,3 +10,4 @@ uint8 ERP_FEATURE_PHASE_LOCKING_VALUE	    = 73   # Trial-to-trial consistency
 uint8 ERP_FEATURE_AUC					    = 74   # Area under curve for certain output
 
 uint8 [] erp_features
+string comments
