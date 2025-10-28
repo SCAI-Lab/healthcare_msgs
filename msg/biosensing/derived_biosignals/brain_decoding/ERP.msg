@@ -15,6 +15,6 @@ uint8 ERP_LABEL_P2           = 3	# Secondary positive peak (~150-200ms)
 uint8 ERP_LABEL_N2           = 4	# Negative peak, cognitive processing (~200-300ms)
 uint8 ERP_LABEL_P3           = 5	# P300 component (~300-500ms), attention-related
 uint8 ERP_LABEL_N400         = 6	# Semantic incongruity (~400ms)
-uint8 ERP_LABEL__CUSTOM      = 255 
+uint8 ERP_LABEL_CUSTOM      = 255 
 
 uint8 erp_label						# Decision of the output model

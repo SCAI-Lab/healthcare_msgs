@@ -40,7 +40,6 @@ uint8[] selected_preprocessing
 # EEG Feature Enum
 uint8 EEG_FEATURE_UNKNOWN            = 0
 
-
 # Frequency Domain
 uint8 EEG_FEATURE_FREQUENCY_WELCH     = 1   # Compute power spectral density using Welch's method
 uint8 EEG_FEATURE_EXTRACT_PSD         = 2   # Compute power spectral density (general)
