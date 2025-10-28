@@ -23,7 +23,7 @@ uint8 PLACEMENT_WRIST = 2
 uint8 PLACEMENT_FINGER = 3
 uint8 PLACEMENT_CUSTOM = 255
 
-uint8 sensor_placement
+uint8[] sensor_placement
 
 # HRV domain (time/frequency)
 uint8 DOMAIN_UNKNOWN = 0
@@ -34,4 +34,4 @@ uint8 DOMAIN_CUSTOM = 255
 
 uint8 hrv_domain
 
-FilterBase filter
+FilterBase filters

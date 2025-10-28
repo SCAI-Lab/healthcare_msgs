@@ -27,6 +27,6 @@ uint8 PLACEMENT_AORTA = 3
 uint8 PLACEMENT_ARM = 4
 uint8 PLACEMENT_CUSTOM = 255
 
-uint8 sensor_placement                    # e.g., PLACEMENT_CHEST
+uint8[] sensor_placement                  # e.g., PLACEMENT_CHEST
 
-FilterBase filter
+FilterBase filters

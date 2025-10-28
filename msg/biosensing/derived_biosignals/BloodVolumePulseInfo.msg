@@ -18,6 +18,6 @@ uint8 PLACEMENT_ARM = 4
 uint8 PLACEMENT_FOREHEAD = 5
 uint8 PLACEMENT_CUSTOM = 255
 
-uint8 sensor_placement
+uint8[] sensor_placement
 
-FilterBase filter
+FilterBase filters

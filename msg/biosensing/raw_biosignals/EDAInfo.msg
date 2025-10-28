@@ -18,7 +18,7 @@ uint8 ELECTRODE_TYPE_SURFACE = 1
 uint8 ELECTRODE_TYPE_INTRACUTANEOUS = 2
 uint8 ELECTRODE_TYPE_CUSTOM = 255
 
-uint8 electrode_type
+uint8[] electrode_type
 
 # Measuring Technique Enum
 uint8 TECHNIQUE_UNKNOWN = 0
@@ -35,4 +35,4 @@ uint8 CURRENT_AC = 2
 
 uint8 current_form
 
-FilterBase filter
+FilterBase filters

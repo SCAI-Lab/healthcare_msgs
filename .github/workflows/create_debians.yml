@@ -1,4 +1,4 @@
-name: Build Status
+name: Build and Create Debians
 
 on:
   pull_request:
@@ -8,7 +8,6 @@ on:
 jobs:
   build-debs:
     runs-on: ubuntu-22.04
-    continue-on-error: true
     strategy:
       matrix:
         include:
@@ -118,3 +117,74 @@ jobs:
         with:
           name: ros-debian-packages-${{ matrix.ros_distro }}-${{ matrix.arch }}
           path: debs/*.deb
+
+      - name: Recompress .deb files for aptly compatibility
+        run: |
+          mkdir -p debs_recompressed
+          for f in debs/*.deb; do
+            echo "Recompressing $f..."
+            dpkg-deb -R "$f" tmp_deb
+            dpkg-deb -bZgzip tmp_deb "debs_recompressed/$(basename "$f")"
+            rm -rf tmp_deb
+          done
+
+          echo "Replacing old debs with recompressed ones..."
+          sudo rm -rf debs
+          sudo mv debs_recompressed debs
+          sudo chown -R $USER:$USER debs
+
+      - name: Create and publish APT repository
+        env:
+          GPG_PRIVATE_KEY_BASE64: ${{ secrets.GPG_PRIVATE_KEY_BASE64 }}
+        run: |
+          set -e
+
+          # Install gnupg + upgraded aptly >=1.5
+          sudo apt-get update
+          sudo apt-get install -y gnupg wget lsb-release
+
+          # Add aptly official repo
+          wget -qO - https://www.aptly.info/pubkey.txt | sudo gpg --dearmor -o /usr/share/keyrings/aptly-archive-keyring.gpg
+          echo "deb [signed-by=/usr/share/keyrings/aptly-archive-keyring.gpg] https://www.aptly.info/ stable main" | sudo tee /etc/apt/sources.list.d/aptly.list
+          sudo apt-get update
+          sudo apt-get install -y aptly
+
+          # Restore GPG key
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          echo "$GPG_PRIVATE_KEY_BASE64" | base64 --decode | gpg --import
+
+          # Extract key ID
+          GPG_KEY=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
+          echo "Using GPG key $GPG_KEY"
+
+          # Define output folder at repo root
+          OUTPUT_DIR="${GITHUB_WORKSPACE}/gh-pages/${{ matrix.ros_distro }}-${{ matrix.arch }}"
+          mkdir -p "$OUTPUT_DIR"
+
+          # Create temporary repo
+          TEMP_REPO="${GITHUB_WORKSPACE}/repo_temp"
+          rm -rf "$TEMP_REPO"
+          mkdir -p "$TEMP_REPO"
+          cd "$TEMP_REPO"
+
+          DISTRO=${{ matrix.ros_distro }}
+          ARCH=${{ matrix.arch }}
+          OS_VERSION=${{ matrix.os_version }}
+
+          # Create local aptly repo
+          aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main healthcare-msgs-${DISTRO}-${ARCH}
+          aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ../debs/*.deb
+
+          # Publish repo using filesystem: (requires aptly >=1.5)
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH} filesystem:"$OUTPUT_DIR"
+
+          # Export GPG key for users
+          gpg --armor --export "$GPG_KEY" > "$OUTPUT_DIR/KEY.gpg"
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./gh-pages
+          keep_files: true
