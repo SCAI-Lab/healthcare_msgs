@@ -100,7 +100,7 @@ uint8 SIGNAL_MODE_CUSTOM = 255
 
 uint8 signal_mode
 
-FilterBase[] filters
+FilterBase [] filters
 
 # Acquisition Type Enum
 uint8 ACQUISITION_TYPE_UNKNOWN = 0
