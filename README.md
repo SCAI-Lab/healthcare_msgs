@@ -58,7 +58,47 @@ Messages are structured to be compatible with Open mHealth schemas. Where possib
 
 ℹ️ Messages may include additional metadata (sampling rate, signal quality, units) not found in OMH schemas.
 
-## 🔧 Build Instructions
+## 📥 Install via APT Repository (recommended)
+
+You can install `healthcare_msgs` directly from our public ROS 2 APT repository. This is the easiest way to get signed packages without building from source.
+
+### 1. Add the public key
+
+```bash
+wget -qO - https://scai-lab.github.io/healthcare_msgs/KEY.gpg | sudo tee /usr/share/keyrings/healthcare-msgs.gpg > /dev/null
+```
+
+### 2. Add the APT source
+
+For ROS 2 Humble (Ubuntu 22.04 Jammy):
+
+```bash
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ humble-jammy main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
+sudo apt update
+sudo apt install ros-humble-healthcare-msgs
+```
+
+*** For ARM architecture, replace the first line with:
+
+```bash
+echo "deb [arch=arm64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ humble-jammy main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
+```
+
+For ROS 2 Rolling (Ubuntu 24.04 Noble):
+```bash
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ rolling-noble main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
+sudo apt update
+sudo apt install ros-rolling-healthcare-msgs
+```
+
+*** For ARM architecture, replace the first line with:
+
+```bash
+echo "deb [arch=arm64 signed-by=/usr/share/keyrings/healthcare-msgs.gpg] https://scai-lab.github.io/healthcare_msgs/ rolling-noble main" | sudo tee /etc/apt/sources.list.d/healthcare-msgs.list
+```
+
+
+## 🔧 Build from Source
 Make sure your ROS 2 workspace is sourced:
 
 ```

@@ -81,56 +81,23 @@ uint8 ELECTRODE_CUSTOM = 255
 uint8[] electrode_sites    # One per channel, in the order used in eeg[] data
 
 # Electrode Physical Type Enum
-uint8 ELECTRODE_PHYSICAL_UNKNOWN = 0
-uint8 ELECTRODE_PHYSICAL_AGCL = 1
-uint8 ELECTRODE_PHYSICAL_GOLD_CUP = 2
-uint8 ELECTRODE_PHYSICAL_DRY = 3
-uint8 ELECTRODE_PHYSICAL_WET = 4
-uint8 ELECTRODE_PHYSICAL_HYDROGEL = 5
-uint8 ELECTRODE_PHYSICAL_MICRONEEDLE = 6
-uint8 ELECTRODE_PHYSICAL_CUSTOM = 255
+uint8 ELECTRODE_PHYSICAL_UNKNOWN      = 0
+uint8 ELECTRODE_PHYSICAL_AGCL         = 1
+uint8 ELECTRODE_PHYSICAL_GOLD_CUP     = 2
+uint8 ELECTRODE_PHYSICAL_DRY          = 3
+uint8 ELECTRODE_PHYSICAL_WET          = 4
+uint8 ELECTRODE_PHYSICAL_HYDROGEL     = 5
+uint8 ELECTRODE_PHYSICAL_MICRONEEDLE  = 6
+uint8 ELECTRODE_PHYSICAL_CUSTOM       = 255
 
-uint8 electrode_physical_type
+uint8[] electrode_physical_type
 
 # Signal Mode Enum
-uint8 SIGNAL_MODE_UNKNOWN = 0
-uint8 SIGNAL_MODE_SURFACE = 1
-uint8 SIGNAL_MODE_INTRACRANIAL = 2
-uint8 SIGNAL_MODE_CUSTOM = 255
+uint8 SIGNAL_MODE_UNKNOWN       = 0
+uint8 SIGNAL_MODE_SURFACE       = 1
+uint8 SIGNAL_MODE_INTRACRANIAL  = 2
+uint8 SIGNAL_MODE_CUSTOM        = 255
 
 uint8 signal_mode
 
-FilterBase [] filters
-
-# Acquisition Type Enum
-uint8 ACQUISITION_TYPE_UNKNOWN = 0
-uint8 ACQUISITION_TYPE_RECORDED = 1
-uint8 ACQUISITION_TYPE_SYNTACTIC = 2
-uint8 ACQUISITION_TYPE_AUGMENTED = 2
-uint8 ACQUISITION_TYPE_CUSTOM = 255
-
-uint8 acquisition_type
-
-# Baseline Info
-float32 baseline_duration_s
-bool baseline_correction_applied
-string baseline_label
-
-# Baseline correcting method Enum
-uint8 BASELINE_CORRECTION_UNKNOWN =				0
-uint8 ACQUISITION_TYPE_CENTER =					1
-uint8 ACQUISITION_TYPE_DEDICATED_ELECTRODE =	2
-uint8 ACQUISITION_TYPE_MEAN =					3
-uint8 BASELINE_CORRECTION_LABEL =				4
-uint8 ACQUISITION_TYPE_CUSTOM =					255
-
-uint8 baseline_correction_method
-
-# For baseline labels
-uint16 baseline_recording_length	# Duration or presence of baseline measurement period in the second	
-string baseline_label
-
-float32 voltage_resolution			# Smallest measurable voltage increment in mV
-float32 amplification_gain			# Factor by which raw signals are amplified
-
-string comments
+FilterBase  filters

@@ -66,12 +66,12 @@ uint8 MI_MOVE_EXTEND          = 2
 uint8 MI_MOVE_OPEN            = 3    
 uint8 MI_MOVE_CLOSE           = 4    
 
-uint8 MI_MOVE_RAISE           = 5     # Lift limb or body part
-uint8 MI_MOVE_LOWER           = 6     # Lower limb or body part
+uint8 MI_MOVE_RAISE           = 5          # Lift limb or body part
+uint8 MI_MOVE_LOWER           = 6          # Lower limb or body part
 
 uint8 MI_MOVE_ROTATE_CLOCKWISE     = 7     # Rotational movement clockwise
 uint8 MI_MOVE_ROTATE_COUNTERCLOCKWISE = 8 
-uint8 MI_MOVE_ROTATE_GENERIC = 9            # Unspecific rotation
+uint8 MI_MOVE_ROTATE_GENERIC = 9           # Unspecific rotation
 
 # Eye / Gaze
 uint8 MI_MOVE_BLINK           = 10    
@@ -81,13 +81,13 @@ uint8 MI_MOVE_LOOK_DOWN       = 13
 uint8 MI_MOVE_LOOK_UP         = 14   
 
 # Specil
-uint8 MI_MOVE_TENSE           = 20     # Tighten muscles (core, trunk, abdomen)
-uint8 MI_MOVE_RELAX           = 21    # Relax muscles
+uint8 MI_MOVE_TENSE           = 20         # Tighten muscles (core, trunk, abdomen)
+uint8 MI_MOVE_RELAX           = 21         # Relax muscles
 
 # --- Generic / unspecified ---
-uint8 MI_MOVE_GENERIC         = 16    # Generic movement or unspecified
+uint8 MI_MOVE_GENERIC         = 16         # Generic movement or unspecified
 
 # --- Custom / experimental ---
-uint8 MI_MOVE_CUSTOM          = 255   # User-defined / experimental
+uint8 MI_MOVE_CUSTOM          = 255        # User-defined / experimental
 
 uint8 mi_movement_type

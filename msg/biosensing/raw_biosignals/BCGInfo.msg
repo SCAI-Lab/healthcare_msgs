@@ -54,4 +54,4 @@ uint8 SYSTEM_CUSTOM = 255
 
 uint8 measurement_system
 
-FilterBase filter
+FilterBase filters

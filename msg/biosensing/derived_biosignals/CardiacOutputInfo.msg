@@ -18,7 +18,7 @@ uint8 PLACEMENT_NECK = 4
 uint8 PLACEMENT_AORTA = 5
 uint8 PLACEMENT_CUSTOM = 255
 
-uint8 sensor_placement
+uint8[] sensor_placement
 
 # Measurement Method Enum
 uint8 METHOD_UNKNOWN = 0
@@ -32,4 +32,4 @@ uint8 METHOD_CUSTOM = 255
 
 uint8 measurement_method
 
-FilterBase filter
+FilterBase filters

@@ -1,3 +1,3 @@
 DeviceInfo device_info
-BrainDecodingGeneralInfo brain_dcoding_general_info
+BrainDecodingGeneralInfo brain_decoding_general_info
 string comments

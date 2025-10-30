@@ -42,6 +42,6 @@ uint8 LEAD_V5 = 11
 uint8 LEAD_V6 = 12
 uint8 LEAD_CUSTOM = 255
 
-uint8 lead_type
+uint8[] lead_type
 
-FilterBase filter
+FilterBase filters
