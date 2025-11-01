@@ -10,11 +10,8 @@ uint8 UNIT_COUNTS = 3
 
 uint8 units
 
-
-
 # EEG Preprocessing Enum
 int8 EEG_FEATURE_UNKNOWN            = 0
-
 uint8 EEG_PREPROC_BANDPASS          = 1  # Bandpass filter applied
 uint8 EEG_PREPROC_NOTCH             = 2  # Notch filter (e.g., 50/60 Hz)
 uint8 EEG_PREPROC_ICA               = 3  # Independent Component Analysis
@@ -23,7 +20,6 @@ uint8 EEG_PREPROC_ARTEFACT_REJ      = 5  # Artifact rejection/interpolation
 uint8 EEG_PREPROC_BASELINE_CORR     = 6  # Baseline correction
 uint8 EEG_PREPROC_DOWNSAMPLE        = 7  # Downsampling
 uint8 EEG_PREPROC_SEGMENTED         = 8  # Epoching / segmentation
-
 uint8 EEG_FEATURE_CUSTOM            = 255 
 
 uint8[] selected_preprocessing	
@@ -49,10 +45,8 @@ uint8 PLACEMENT_METHOD_1020=1
 uint8 PLACEMENT_METHOD_1010=2
 uint8 PLACEMENT_METHOD_105=3
 uint8 PLACEMENT_METHOD_CUSTOM=255
-uint8 placement_method
 
-
-uint8[] placement     # Support multiple placements
+uint8[] placement_method         # Support multiple placements
 
 # Electrode Site Enum
 uint8 ELECTRODE_UNKNOWN = 0
