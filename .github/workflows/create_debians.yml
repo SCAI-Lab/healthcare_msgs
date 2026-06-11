@@ -17,6 +17,12 @@ jobs:
           - ros_distro: humble
             arch: arm64
             os_version: jammy
+          - ros_distro: jazzy
+            arch: amd64
+            os_version: noble
+          - ros_distro: jazzy
+            arch: arm64
+            os_version: noble
           - ros_distro: rolling
             arch: amd64
             os_version: resolute
