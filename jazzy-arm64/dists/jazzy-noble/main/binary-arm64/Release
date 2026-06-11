@@ -1,0 +1,5 @@
+Origin: jazzy-arm64 jazzy-noble
+Label: jazzy-arm64 jazzy-noble
+Archive: jazzy-noble
+Architecture: arm64
+Component: main
