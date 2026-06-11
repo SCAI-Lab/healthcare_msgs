@@ -1,0 +1,5 @@
+Origin: rolling-arm64 rolling-resolute
+Label: rolling-arm64 rolling-resolute
+Archive: rolling-resolute
+Architecture: arm64
+Component: main
