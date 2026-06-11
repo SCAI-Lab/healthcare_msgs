@@ -1,0 +1,5 @@
+Origin: humble-amd64 humble-jammy
+Label: humble-amd64 humble-jammy
+Archive: humble-jammy
+Architecture: amd64
+Component: main
