@@ -19,10 +19,10 @@ jobs:
             os_version: jammy
           - ros_distro: rolling
             arch: amd64
-            os_version: noble
+            os_version: resolute
           - ros_distro: rolling
             arch: arm64
-            os_version: noble
+            os_version: resolute
 
     steps:
       - name: Set up QEMU
