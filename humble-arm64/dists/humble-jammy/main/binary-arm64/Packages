@@ -1,0 +1,17 @@
+Package: ros-humble-healthcare-msgs
+Priority: optional
+Section: misc
+Installed-Size: 8720
+Maintainer: "Monica Perez Serrano" <moperez@ethz.ch>
+Architecture: arm64
+Version: 1.0.0-0jammy
+Depends: ros-humble-builtin-interfaces, ros-humble-geometry-msgs, ros-humble-rosidl-default-runtime, ros-humble-std-msgs
+Filename: pool/main/r/ros-humble-healthcare-msgs/ros-humble-healthcare-msgs_1.0.0-0jammy_arm64.deb
+Size: 1149680
+MD5sum: 43da52b7f0f9515b528792e3f460bde6
+SHA1: 6f651dcbcb67f4fe784026161364194b53bd1761
+SHA256: 1a0d515af5d5c1a838da61f07c7042945c3db280c43898ec364bca75d4fdc5f4
+SHA512: d81b194c73185ac9c643d659d246b97586707f4c7acd37a94a84d94250758c221278a35605e696b3a4a827789e11584b0d9eaec17c2a410180141e02cac2f1a6
+Description: Healthcare message definitions for ROS2
+Homepage: https://index.ros.org/p/healthcare_msgs/#humble
+
