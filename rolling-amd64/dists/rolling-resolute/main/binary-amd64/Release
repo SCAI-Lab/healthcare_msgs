@@ -1,0 +1,5 @@
+Origin: rolling-amd64 rolling-resolute
+Label: rolling-amd64 rolling-resolute
+Archive: rolling-resolute
+Architecture: amd64
+Component: main

@@ -1,0 +1,17 @@
+Package: ros-rolling-healthcare-msgs
+Priority: optional
+Section: misc
+Installed-Size: 11186
+Maintainer: "Monica Perez Serrano" <moperez@ethz.ch>
+Architecture: amd64
+Version: 1.0.0-0resolute
+Depends: ros-rolling-builtin-interfaces, ros-rolling-geometry-msgs, ros-rolling-rosidl-default-runtime, ros-rolling-std-msgs
+Filename: pool/main/r/ros-rolling-healthcare-msgs/ros-rolling-healthcare-msgs_1.0.0-0resolute_amd64.deb
+Size: 1508244
+MD5sum: abab14d523b71aa6d7427aab295fb8f5
+SHA1: d32e57d75b83e859ad52380a7e553068d5300b47
+SHA256: caf064a32b2757885860b1bb24ef7f035f7a1b2c0d271f2b66fed207d7541ede
+SHA512: 6a30d3de8b49c6a708f01219f4f4b6a1c87308358c2f7048226ad2beb81cdf7c86eb5841e7027c2ed652f4b2107ecc6aa3c240796d305b0c4355cfe49034c161
+Description: Healthcare message definitions for ROS2
+Homepage: https://index.ros.org/p/healthcare_msgs/#rolling
+
