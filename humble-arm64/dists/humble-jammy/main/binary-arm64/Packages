@@ -7,11 +7,11 @@ Architecture: arm64
 Version: 1.0.0-0jammy
 Depends: ros-humble-builtin-interfaces, ros-humble-geometry-msgs, ros-humble-rosidl-default-runtime, ros-humble-std-msgs
 Filename: pool/main/r/ros-humble-healthcare-msgs/ros-humble-healthcare-msgs_1.0.0-0jammy_arm64.deb
-Size: 1149682
-MD5sum: 6ea50e86b4e422f39156fd5ce741e028
-SHA1: cb5fcf5ca5f8dccccfba958a7134fa9590155115
-SHA256: a6a86b8cbd62267db06c2af5edf7a50f77d4a77b137e65f4f10df2a538447ebe
-SHA512: fcf699a7f8b45a2f84019f0ca590a809544795a8d2207a40ba9b8b108fefb52275518d21a01131a942bf8ebf0a2aa34ec6193165ace2e0e023011ceb47392eac
+Size: 1149662
+MD5sum: 8cb08482d7e867b25a45fe9a7793bcf9
+SHA1: a3584ec75d2a15feddc726545736b6b6a1f1c0f8
+SHA256: 99a14deaa12db7cb6452c5a99dcb4003aacbdda71ea02235fcb49907e6fe002c
+SHA512: 756b3d935854369f0e4db2cdfb37f00b6210e5205660bf0aa0d298d626e3014e89741cab2c10a4638ac56a5912cb0ffa89a75d3b310c1fc989dc86181b963f77
 Description: Healthcare message definitions for ROS2
 Homepage: https://index.ros.org/p/healthcare_msgs/#humble
 
