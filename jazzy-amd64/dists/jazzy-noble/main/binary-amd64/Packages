@@ -7,11 +7,11 @@ Architecture: amd64
 Version: 1.0.0-0noble
 Depends: ros-jazzy-builtin-interfaces, ros-jazzy-geometry-msgs, ros-jazzy-rosidl-default-runtime, ros-jazzy-std-msgs
 Filename: pool/main/r/ros-jazzy-healthcare-msgs/ros-jazzy-healthcare-msgs_1.0.0-0noble_amd64.deb
-Size: 1380070
-MD5sum: 244c1f290ee9d46bd8eba38e2c8e8006
-SHA1: 70ef52d43de39f668f5a4ec0675a3f21d21642b8
-SHA256: f381c743f88114fe41b818238031ea987a781fb48eb31e7f88851608e358f8fa
-SHA512: dc939e37f18e525780755eb664ef76d62dfcdbf930d1202e06d2b3092792e2d1e43a84823e5bfd666c78d3565d1b3cf189a69e67dd505c77939fd44cc96bb347
+Size: 1380166
+MD5sum: 12f2ecd8e771e5596e179613fd359ddd
+SHA1: 5f3204dbefda9970fe39ed0720d3ace892da5fc4
+SHA256: 8cf9693ebeedba1135e6d190a62b0160e575e97ef4511acccba4e2b5dcb6a055
+SHA512: 13de159dffc2bc155c19fe4dfb85c1fc48bd4c172938ea131110480083091a35772bb3a00cc7641212fe2d9e5c3c7e5799ccafb9e67f56551029da5598466bee
 Description: Healthcare message definitions for ROS2
 Homepage: https://index.ros.org/p/healthcare_msgs/#jazzy
 
