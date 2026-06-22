@@ -123,3 +123,6 @@ ROS 2 interface packages:
 
 ## 🤝 Contributing
 Contributions are welcome! If you'd like to add support for new OMH schemas or signal types, feel free to open an issue or pull request.
+
+## 🙏 Acknowledgements
+This work was partially funded by the Open Research Data program of the ETH Board, and Schweizer Paraplegiker Stiftung (2021-HS-348) within the Digital Transformation in Personalized Healthcare in SCI.
