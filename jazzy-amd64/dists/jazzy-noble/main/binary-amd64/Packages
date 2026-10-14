@@ -1,17 +1,17 @@
 Package: ros-jazzy-healthcare-msgs
 Priority: optional
 Section: misc
-Installed-Size: 10602
+Installed-Size: 11405
 Maintainer: "Monica Perez Serrano" <moperez@ethz.ch>
 Architecture: amd64
 Version: 1.0.0-0noble
 Depends: ros-jazzy-builtin-interfaces, ros-jazzy-geometry-msgs, ros-jazzy-rosidl-default-runtime, ros-jazzy-std-msgs
 Filename: pool/main/r/ros-jazzy-healthcare-msgs/ros-jazzy-healthcare-msgs_1.0.0-0noble_amd64.deb
-Size: 1380166
-MD5sum: 12f2ecd8e771e5596e179613fd359ddd
-SHA1: 5f3204dbefda9970fe39ed0720d3ace892da5fc4
-SHA256: 8cf9693ebeedba1135e6d190a62b0160e575e97ef4511acccba4e2b5dcb6a055
-SHA512: 13de159dffc2bc155c19fe4dfb85c1fc48bd4c172938ea131110480083091a35772bb3a00cc7641212fe2d9e5c3c7e5799ccafb9e67f56551029da5598466bee
+Size: 1475694
+MD5sum: 6c53745db001ef0ccc93d84e73c05001
+SHA1: e84882660b1b049adf5564095d4ae64a395c3a3a
+SHA256: ca300f1d5916bb32e125f55de796a8efe8ba4665a6a754f9eef747046132366b
+SHA512: ea1a34c07066f462979d88f370fc3e8d9c44a8933aef71f2232f514031f210f28bbf29844ba090135644186fffcaccc769e7e40774ef16001cf0465e710b3d9f
 Description: Healthcare message definitions for ROS2
 Homepage: https://index.ros.org/p/healthcare_msgs/#jazzy
 
