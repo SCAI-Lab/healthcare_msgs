@@ -1,17 +1,17 @@
 Package: ros-humble-healthcare-msgs
 Priority: optional
 Section: misc
-Installed-Size: 8751
+Installed-Size: 9383
 Maintainer: "Monica Perez Serrano" <moperez@ethz.ch>
 Architecture: amd64
 Version: 1.0.0-0jammy
 Depends: ros-humble-builtin-interfaces, ros-humble-geometry-msgs, ros-humble-rosidl-default-runtime, ros-humble-std-msgs
 Filename: pool/main/r/ros-humble-healthcare-msgs/ros-humble-healthcare-msgs_1.0.0-0jammy_amd64.deb
-Size: 1173554
-MD5sum: 8563c8aaa5f6dd5196a1fa1a55a7b773
-SHA1: 7d952a1009a49bcca7ce070e5290a633635782d7
-SHA256: b52cdbf5c2b9bea1b7d6fbcb1058e805b779b8fb4db5c40c15c4f15dd28bb734
-SHA512: d1446287615a7425760e3d6a006e9ff3d773439636b095d6ae7693bef1317d9d7ca5310af91bcf729c2188b359fa505acff9a652ba1d346a628d97a7119f4a51
+Size: 1252290
+MD5sum: 7bb3ded4f35eeda26a7425838549e7e6
+SHA1: c71863272a6be650123e632b5cc75a20fdd5ac03
+SHA256: efbc0785f59260d5a5c0f74b5dabda2445d01301b9fddbc6bdcee574297303ff
+SHA512: 337e9aece31393dd311328d5d63a0bdd09e6d325af8fda66c7f60cf4b65adee6b622eb3839be762048e1d64d81fd29a8ce127ccceb307fed3ab96e3a0dac71f7
 Description: Healthcare message definitions for ROS2
 Homepage: https://index.ros.org/p/healthcare_msgs/#humble
 
