@@ -17,12 +17,18 @@ jobs:
           - ros_distro: humble
             arch: arm64
             os_version: jammy
-          - ros_distro: rolling
+          - ros_distro: jazzy
             arch: amd64
             os_version: noble
-          - ros_distro: rolling
+          - ros_distro: jazzy
             arch: arm64
             os_version: noble
+          - ros_distro: rolling
+            arch: amd64
+            os_version: resolute
+          - ros_distro: rolling
+            arch: arm64
+            os_version: resolute
 
     steps:
       - name: Set up QEMU
@@ -56,7 +62,7 @@ jobs:
           mkdir -p /etc/ros/rosdep/sources.list.d
 
           if [ -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then
-            sudo rm /etc/ros/rosdep/sources.list.d/20-default.list
+            rm /etc/ros/rosdep/sources.list.d/20-default.list
           fi
 
           echo "yaml file:///tmp/rosdep_combined_override.yaml" > /etc/ros/rosdep/sources.list.d/50-local.list
@@ -139,15 +145,8 @@ jobs:
         run: |
           set -e
 
-          # Install gnupg + upgraded aptly >=1.5
           sudo apt-get update
-          sudo apt-get install -y gnupg wget lsb-release
-
-          # Add aptly official repo
-          wget -qO - https://www.aptly.info/pubkey.txt | sudo gpg --dearmor -o /usr/share/keyrings/aptly-archive-keyring.gpg
-          echo "deb [signed-by=/usr/share/keyrings/aptly-archive-keyring.gpg] https://www.aptly.info/ stable main" | sudo tee /etc/apt/sources.list.d/aptly.list
-          sudo apt-get update
-          sudo apt-get install -y aptly
+          sudo apt-get install -y gnupg aptly
 
           # Restore GPG key
           mkdir -p ~/.gnupg
@@ -158,26 +157,24 @@ jobs:
           GPG_KEY=$(gpg --list-secret-keys --with-colons | awk -F: '/^sec:/ {print $5; exit}')
           echo "Using GPG key $GPG_KEY"
 
-          # Define output folder at repo root
-          OUTPUT_DIR="${GITHUB_WORKSPACE}/gh-pages/${{ matrix.ros_distro }}-${{ matrix.arch }}"
-          mkdir -p "$OUTPUT_DIR"
-
-          # Create temporary repo
-          TEMP_REPO="${GITHUB_WORKSPACE}/repo_temp"
-          rm -rf "$TEMP_REPO"
-          mkdir -p "$TEMP_REPO"
-          cd "$TEMP_REPO"
-
           DISTRO=${{ matrix.ros_distro }}
           ARCH=${{ matrix.arch }}
           OS_VERSION=${{ matrix.os_version }}
+          APTLY_ROOT="${GITHUB_WORKSPACE}/.aptly_work"
+          OUTPUT_DIR="${GITHUB_WORKSPACE}/gh-pages/${DISTRO}-${ARCH}"
 
-          # Create local aptly repo
+          mkdir -p "$APTLY_ROOT" "$OUTPUT_DIR"
+          echo "{\"rootDir\": \"$APTLY_ROOT\"}" > ~/.aptly.conf
+
+          # Create and populate aptly repo
           aptly repo create -distribution=${DISTRO}-${OS_VERSION} -component=main healthcare-msgs-${DISTRO}-${ARCH}
-          aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ../debs/*.deb
+          aptly repo add healthcare-msgs-${DISTRO}-${ARCH} ${GITHUB_WORKSPACE}/debs/*.deb
 
-          # Publish repo using filesystem: (requires aptly >=1.5)
-          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH} filesystem:"$OUTPUT_DIR"
+          # Publish repo (aptly writes to $APTLY_ROOT/public/$prefix/)
+          aptly publish repo -architectures=$ARCH -gpg-key="$GPG_KEY" healthcare-msgs-${DISTRO}-${ARCH} ${DISTRO}-${ARCH}
+
+          # Copy published files to output directory
+          cp -r "${APTLY_ROOT}/public/${DISTRO}-${ARCH}/." "$OUTPUT_DIR/"
 
           # Export GPG key for users
           gpg --armor --export "$GPG_KEY" > "$OUTPUT_DIR/KEY.gpg"

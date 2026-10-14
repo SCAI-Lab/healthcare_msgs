@@ -2,6 +2,7 @@
 
 ![Build Status](https://github.com/SCAI-Lab/healthcare_msgs/actions/workflows/create_debians.yml/badge.svg)
 [![ROS 2 Humble+](https://img.shields.io/badge/ROS%202-Humble+-blue.svg)](https://docs.ros.org/en/humble/index.html)
+[![ROS 2 Jazzy](https://img.shields.io/badge/ROS%202-Jazzy-blue.svg)](https://docs.ros.org/en/jazzy/index.html)
 [![ROS 2 Rolling+](https://img.shields.io/badge/ROS%202-Rolling+-blue.svg)](https://docs.ros.org/en/rolling/index.html)
 [![License: Apache 2.0](https://img.shields.io/badge/License-Apache_2.0-green.svg)](LICENSE)
 [![Open mHealth Compatible](https://img.shields.io/badge/Open%20mHealth-Compatible-orange)](https://www.openmhealth.org)
