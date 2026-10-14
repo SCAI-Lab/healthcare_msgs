@@ -1,0 +1,10 @@
+@software{perez_serrano_healthcare_msgs,
+  author    = {Perez Serrano, Monica and Caesar, Tjalf},
+  title     = {{healthcare\_msgs}: ROS 2 Standard Message Library for Healthcare Messages},
+  version   = {1.0.0},
+  year      = {2026},
+  publisher = {SCAI Lab},
+  url       = {https://github.com/SCAI-Lab/healthcare_msgs},
+  license   = {Apache-2.0},
+  note      = {Accessed: 2026-10-14}
+}
