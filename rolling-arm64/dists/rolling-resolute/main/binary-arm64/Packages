@@ -7,11 +7,11 @@ Architecture: arm64
 Version: 1.0.0-0resolute
 Depends: ros-rolling-builtin-interfaces, ros-rolling-geometry-msgs, ros-rolling-rosidl-default-runtime, ros-rolling-std-msgs
 Filename: pool/main/r/ros-rolling-healthcare-msgs/ros-rolling-healthcare-msgs_1.0.0-0resolute_arm64.deb
-Size: 1645736
-MD5sum: dc6894443f2a4afb0f85fb1dc3fa0f19
-SHA1: 4b8080a71b8d50a03b5118b133520809f79d1bb4
-SHA256: 12a90ab940c2d5ff4f5beade9a7390fee84c44657503e0c3ab2041f554705c3f
-SHA512: a1e88c1678f341858e75163faf37d3a9b34d2a1fd141d8514b813bb140434d5273c64c30a40c199adf67b94fcf584757038e25e6ee3ec1ccab9976b30645a44d
+Size: 1645562
+MD5sum: 0ac23a9fee6d9b8a17bedd101280ddcf
+SHA1: 5a41061149a6573e57ad4532b4ad30b6c179a57f
+SHA256: a19353922c8ce939af8080a6d3ee2fd09e7366a614ecfe673b7a96b0b8d722f4
+SHA512: 7b33807ea64b7028da8953af7702a8d3e848fdf1d4ead0c020e94033fa2a6224a1b745491fca48e4bc6ee9e89761c19ce2e4d5269421f4efaeb0eb0ce1012aa4
 Description: Healthcare message definitions for ROS2
 Homepage: https://index.ros.org/p/healthcare_msgs/#rolling
 
